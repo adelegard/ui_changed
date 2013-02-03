@@ -5,6 +5,8 @@ source "http://rubygems.org"
 # development dependencies will be added by default to the :development group.
 gemspec
 
+gem 'mysql2'
+
 gem "bootstrap-sass"
 gem 'will_paginate'
 gem "haml-rails"

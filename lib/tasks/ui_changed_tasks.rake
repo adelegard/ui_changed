@@ -2,36 +2,36 @@
 # task :ui_changed do
 #   # Task goes here
 # end
-require 'resque/tasks'
+require 'ui_changed'
 
 # rake ss:crawl_for_control
 task :crawl_for_control => :environment do
-  Screenshot.start_async_crawl_for_control
+  UiChanged::Screenshot.start_async_crawl_for_control
 end
 
 # rake ss:crawl_for_test
 task :crawl_for_test => :environment do
-  Screenshot.start_async_crawl_for_test
+  UiChanged::Screenshot.start_async_crawl_for_test
 end
 
 # rake ss:crawl_for_control_and_test
 task :crawl_for_control_and_test => :environment do
-  Screenshot.crawl_for_control_and_test
+  UiChanged::Screenshot.crawl_for_control_and_test
 end
 
 # rake ss:crawl_for_control_and_compare
 task :crawl_for_control_and_compare => :environment do
-  Screenshot.start_async_crawl_for_control_and_compare
+  UiChanged::Screenshot.start_async_crawl_for_control_and_compare
 end
 
 # rake ss:crawl_for_test_and_compare
 task :crawl_for_test_and_compare => :environment do
-  Screenshot.start_async_crawl_for_test_and_compare
+  UiChanged::Screenshot.start_async_crawl_for_test_and_compare
 end
 
 # rake ss:compare
 task :compare => :environment do
-  Screenshot.start_async_compare
+  UiChanged::Screenshot.start_async_compare
 end
 
 task :start_selenium_server => :environment do

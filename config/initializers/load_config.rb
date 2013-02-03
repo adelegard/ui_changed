@@ -1,0 +1,1 @@
+MTC_CONFIG = YAML.load_file(Rails.root.join('config', 'ui_changed.yml'))[Rails.env]

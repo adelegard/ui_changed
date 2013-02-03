@@ -1,0 +1,19 @@
+defaults: &defaults
+  control_path: "public/screenshots/control/"
+  test_path: "public/screenshots/test/"
+  compare_path: "public/screenshots/compare/"
+  auth_username: "foo2"
+  auth_password: "bar2"
+  control_url: "http://localhost"
+  test_url: "http://localhost"
+  skip_url_reg_exp: "(recipes|ingredients)"
+  skip_query_strings: true
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults

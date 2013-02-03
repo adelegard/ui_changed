@@ -22,11 +22,11 @@ module UiChanged
     class << self
 
       def start_async_crawl_for_control
-        CrawlControl.create
+        UiChanged::CrawlControl.create
       end
 
       def start_async_crawl_for_test
-        CrawlTest.create
+        UiChanged::CrawlTest.create
       end
       def start_async_crawl_for_control_and_test
         start_async_crawl_for_control
@@ -41,7 +41,7 @@ module UiChanged
         start_async_compare
       end
       def start_async_compare
-        Compare.create
+        UiChanged::Compare.create
       end
 
       def async_crawl_and_compare
@@ -51,11 +51,11 @@ module UiChanged
       end
 
       def search(search)
-        Screenshot.where('screenshots.url LIKE ?', "%#{search}%")
+        UiChanged::Screenshot.where('ui_changed_screenshots.url LIKE ?', "%#{search}%")
       end
       def set_all_tests_as_controls
         delete_all_controls
-        Screenshot.update_all({:is_control => true, :is_test => false}, {:is_test => true})
+        UiChanged::Screenshot.update_all({:is_control => true, :is_test => false}, {:is_test => true})
       end
       def set_tests_as_controls(test_ids)
         test_ids.each do |test_id|
@@ -63,9 +63,9 @@ module UiChanged
         end
       end
       def set_test_as_control(test_id)
-        test_ss = Screenshot.find(test_id)
-        control_ss = Screenshot.find_by_url_and_is_control(test_ss.url, true)
-        compare_ss = Screenshot.find_by_test_id(test_ss.id)
+        test_ss = UiChanged::Screenshot.find(test_id)
+        control_ss = UiChanged::Screenshot.find_by_url_and_is_control(test_ss.url, true)
+        compare_ss = UiChanged::Screenshot.find_by_test_id(test_ss.id)
 
         unless !control_ss
           control_ss.remove_image
@@ -85,20 +85,20 @@ module UiChanged
 
       # delete all entries & images
       def delete_all_controls
-        Screenshot.delete_all(:is_control => true)
-        Screenshot.delete_all(:is_compare => true)
-        FileUtils.rm_rf(Dir.glob(ConfigHelper.control_path + '*'))
-        FileUtils.rm_rf(Dir.glob(ConfigHelper.compare_path + '*'))
+        UiChanged::Screenshot.delete_all(:is_control => true)
+        UiChanged::Screenshot.delete_all(:is_compare => true)
+        FileUtils.rm_rf(Dir.glob(UiChanged::ConfigHelper.control_path + '*'))
+        FileUtils.rm_rf(Dir.glob(UiChanged::ConfigHelper.compare_path + '*'))
       end
       def delete_all_tests
-        Screenshot.delete_all(:is_test => true)
-        Screenshot.delete_all(:is_compare => true)
-        FileUtils.rm_rf(Dir.glob(ConfigHelper.test_path + '*'))
-        FileUtils.rm_rf(Dir.glob(ConfigHelper.compare_path + '*'))
+        UiChanged::Screenshot.delete_all(:is_test => true)
+        UiChanged::Screenshot.delete_all(:is_compare => true)
+        FileUtils.rm_rf(Dir.glob(UiChanged::ConfigHelper.test_path + '*'))
+        FileUtils.rm_rf(Dir.glob(UiChanged::ConfigHelper.compare_path + '*'))
       end
       def delete_all_compares
-        Screenshot.delete_all(:is_compare => true)
-        FileUtils.rm_rf(Dir.glob(ConfigHelper.compare_path + '*'))
+        UiChanged::Screenshot.delete_all(:is_compare => true)
+        FileUtils.rm_rf(Dir.glob(UiChanged::ConfigHelper.compare_path + '*'))
       end
 
       def destroy_entries_and_images(ids)
@@ -107,17 +107,17 @@ module UiChanged
         end
       end
       def destroy_entry_and_image(id)
-        ss = Screenshot.find(id)
+        ss = UiChanged::Screenshot.find(id)
 
         # remove the corresponding compare screenshot
         if ss.is_control
-          compare_ss = Screenshot.find_by_control_id(ss.id)
+          compare_ss = UiChanged::Screenshot.find_by_control_id(ss.id)
           if compare_ss
             compare_ss.remove_image
             compare_ss.destroy
           end
         elsif ss.is_test
-          compare_ss = Screenshot.find_by_test_id(ss.id)
+          compare_ss = UiChanged::Screenshot.find_by_test_id(ss.id)
           if compare_ss
             compare_ss.remove_image
             compare_ss.destroy
@@ -138,8 +138,8 @@ module UiChanged
         end
       end
       def remove_diff_and_test(diff_id)
-        ss_diff = Screenshot.find(diff_id)
-        ss_test = Screenshot.find(ss_diff.test_id)
+        ss_diff = UiChanged::Screenshot.find(diff_id)
+        ss_test = UiChanged::Screenshot.find(ss_diff.test_id)
         ss_diff.remove_image
         ss_diff.destroy
 
@@ -149,23 +149,23 @@ module UiChanged
 
       def move_all_test_images_to_control
         # delete all control images
-        FileUtils.rm_rf(Dir.glob(ConfigHelper.control_path + '*'))
+        FileUtils.rm_rf(Dir.glob(UiChanged::ConfigHelper.control_path + '*'))
 
         # move all test images to control directory
-        Dir.foreach(ConfigHelper.test_path) do |img|
+        Dir.foreach(UiChanged::ConfigHelper.test_path) do |img|
           next if img == '.' || img == '..'
           # do work on real items
-          Screenshot.move_test_image_to_control(img)
+          UiChanged::Screenshot.move_test_image_to_control(img)
         end
       end
 
       def move_test_image_to_control(image_file_name_full)
-        FileUtils.mv(ConfigHelper.test_path + image_file_name_full,
-                     ConfigHelper.control_path + image_file_name_full)
+        FileUtils.mv(UiChanged::ConfigHelper.test_path + image_file_name_full,
+                     UiChanged::ConfigHelper.control_path + image_file_name_full)
       end
 
       def not_in_ignored
-        Screenshot.joins("LEFT JOIN screenshot_ignore_urls siu ON siu.url = screenshots.url").where('siu.id is null')
+        UiChanged::Screenshot.joins("LEFT JOIN ui_changed_screenshot_ignore_urls siu ON siu.url = ui_changed_screenshots.url").where('siu.id is null')
       end
     end
 
@@ -175,17 +175,17 @@ module UiChanged
     end
 
     def move_test_image_to_control
-      Screenshot.move_test_image_to_control(image_file_name_full)
-      Screenshot.move_test_image_to_control(image_file_name_small_full)
+      UiChanged::Screenshot.move_test_image_to_control(image_file_name_full)
+      UiChanged::Screenshot.move_test_image_to_control(image_file_name_small_full)
     end
 
     def image_path_base
       if is_control
-        ConfigHelper.control_path
+        UiChanged::ConfigHelper.control_path
       elsif is_compare
-        ConfigHelper.compare_path
+        UiChanged::ConfigHelper.compare_path
       else
-        ConfigHelper.test_path
+        UiChanged::ConfigHelper.test_path
       end
     end
 

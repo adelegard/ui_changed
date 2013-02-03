@@ -1,7 +1,7 @@
 .well
   %ul.nav.nav-list
-    %li{:class => request.fullpath == screenshot_index_path ? "active" : ""}
-      %a{:href => screenshot_index_path}
+    %li{:class => request.fullpath == screenshots_path ? "active" : ""}
+      %a{:href => screenshots_path}
         %i.icon-home
         Home
     %li.divider
@@ -25,13 +25,8 @@
         %i.icon-resize-small
         %span Compares
         %span.pull-right= @compare_count
-    %li{:class => request.fullpath.include?(screenshot_ignore_url_index_path) ? "active" : ""}
-      %a{:href => screenshot_ignore_url_index_path}
+    %li{:class => request.fullpath.include?(screenshot_ignore_urls_path) ? "active" : ""}
+      %a{:href => screenshot_ignore_urls_path}
         %i.icon-flag
-        %span Ignored
+        %span Ignored Urls
         %span.pull-right= @ignore_count
-    %li.divider
-    %li{:class => request.fullpath.include?(screenshot_settings_path) ? "active" : ""}
-      %a{:href => screenshot_settings_path}
-        %i.icon-wrench
-        Settings

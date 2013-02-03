@@ -6,11 +6,11 @@ module UiChanged
 
     class << self
       def search(search)
-        ScreenshotIgnoreUrl.where('screenshot_ignore_urls.url LIKE ?', "%#{search}%")
+        UiChanged::ScreenshotIgnoreUrl.where('ui_changed_screenshot_ignore_urls.url LIKE ?', "%#{search}%")
       end
 
       def all_ignores_urls_as_reg_exp
-        Regexp.new(ConfigHelper.skip_url_reg_exp)
+        Regexp.new(UiChanged::ConfigHelper.skip_url_reg_exp)
       end
     end
   end

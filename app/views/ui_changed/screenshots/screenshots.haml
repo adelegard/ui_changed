@@ -1,4 +1,4 @@
-= render :partial => "screenshot/top_buttons", :locals => {:screenshots => @screenshots, :show_buttons => !@screenshots.empty?}
+= render :partial => "ui_changed/screenshots/top_buttons", :locals => {:screenshots => @screenshots, :show_buttons => !@screenshots.empty?}
 .page-header
   %h1= "#{@type} Screenshots"
 -if @screenshots.length > 0
