@@ -6,7 +6,9 @@ This rails plugin provides an interface for detecting differences in your UIs by
 
 Ui_Changed works with Rails 3.1 and up. You can add it to your Gemfile with:
 
-    gem 'ui_changed'
+```ruby
+gem 'ui_changed'
+```
 
 Ui_Changed needs some database tables generated in order to function properly. To add these to your existing database:
 
@@ -18,25 +20,27 @@ This command copies over the necessary migrations from ui_changed. To execute th
     
 Add ui_changed.yml to your config directory:
 
-    defaults: &defaults
-      control_path: "public/screenshots/control/"
-      test_path: "public/screenshots/test/"
-      compare_path: "public/screenshots/compare/"
-      auth_username:
-      auth_password:
-      control_url: "http://some_control_url"
-      test_url: "http://some_test_url"
-      skip_url_reg_exp:
-      skip_query_strings: true
-    
-    development:
-      <<: *defaults
-    
-    test:
-      <<: *defaults
-    
-    production:
-      <<: *defaults
+```yml
+defaults: &defaults
+  control_path: "public/screenshots/control/"
+  test_path: "public/screenshots/test/"
+  compare_path: "public/screenshots/compare/"
+  auth_username:
+  auth_password:
+  control_url: "http://some_control_url"
+  test_url: "http://some_test_url"
+  skip_url_reg_exp:
+  skip_query_strings: true
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults
+```
 
 Ui_Changed uses ImageMagick under the covers. Install it via [HomeBrew][homebrew] seems to be the easiest:
 
