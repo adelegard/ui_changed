@@ -5,20 +5,20 @@ module UiChanged
 
     def crawl_by_is_control(is_control)
       if is_control
-        image_dir = ConfigHelper.control_path
-        crawl_url = ConfigHelper.control_url
+        image_dir = UiChanged::ConfigHelper.control_path
+        crawl_url = UiChanged::ConfigHelper.control_url
       else
-        image_dir = ConfigHelper.test_path
-        crawl_url = ConfigHelper.test_url
+        image_dir = UiChanged::ConfigHelper.test_path
+        crawl_url = UiChanged::ConfigHelper.test_url
       end
       crawl_by_image_dir_and_is_control_and_url(image_dir, is_control, crawl_url)
     end
 
     def crawl_by_is_control_and_url(is_control, crawl_url)
       if is_control
-        image_dir = ConfigHelper.control_path
+        image_dir = UiChanged::ConfigHelper.control_path
       else
-        image_dir = ConfigHelper.test_path
+        image_dir = UiChanged::ConfigHelper.test_path
       end
       crawl_by_image_dir_and_is_control_and_url(image_dir, is_control, crawl_url)
     end
@@ -27,13 +27,13 @@ module UiChanged
       status_msg = "removing all matching db entries & images: (is_control: " + is_control.to_s + ")"
       tick(status_msg)
       puts status_msg
-      is_control ? Screenshot.delete_all_controls : Screenshot.delete_all_tests
+      is_control ? UiChanged::Screenshot.delete_all_controls : UiChanged::Screenshot.delete_all_tests
 
       # not super ideal
       # ideally we do this after crawling and deleting
       # only screenshot rows where is_compare => true
       # and where control_id or test_id is dangling (no longer exists)
-      Screenshot.delete_all_compares
+      UiChanged::Screenshot.delete_all_compares
 
       puts "is_control: " + is_control.to_s
 
@@ -46,10 +46,10 @@ module UiChanged
       driver.manage.window.resize_to(1024, 768) # this doesn't work (i dont think)
       driver.manage.timeouts.implicit_wait = 60 # seconds
 
-      urls_to_skip = ScreenshotIgnoreUrl.all_ignores_urls_as_reg_exp
+      urls_to_skip = UiChanged::ScreenshotIgnoreUrl.all_ignores_urls_as_reg_exp
       puts urls_to_skip.to_s
 
-      skip_query_strings = ConfigHelper.skip_query_strings ||= false
+      skip_query_strings = UiChanged::ConfigHelper.skip_query_strings ||= false
       puts 'skip query strings: ' + skip_query_strings.to_s
 
       STDOUT.flush
@@ -82,9 +82,9 @@ module UiChanged
   #    end
 
       if is_control
-        ss = Screenshot.find_or_create_by_url_and_is_control(page_url.to_s, true)
+        ss = UiChanged::Screenshot.find_or_create_by_url_and_is_control(page_url.to_s, true)
       else
-        ss = Screenshot.find_or_create_by_url_and_is_test(page_url.to_s, true)
+        ss = UiChanged::Screenshot.find_or_create_by_url_and_is_test(page_url.to_s, true)
       end
       puts 'found or created ss id: ' + ss.id.to_s
       image_file_name = "image_" + ss.id.to_s
@@ -114,25 +114,25 @@ module UiChanged
 
     def start_comparing
       tick("starting compare")
-      compare_image_dir = ConfigHelper.compare_path
+      compare_image_dir = UiChanged::ConfigHelper.compare_path
 
-      if !Dir.exists?(ConfigHelper.control_path) || !Dir.exists?(ConfigHelper.test_path)
+      if !Dir.exists?(UiChanged::ConfigHelper.control_path) || !Dir.exists?(UiChanged::ConfigHelper.test_path)
         # can't do any comparison! later.
         return
       end
 
       puts 'removing all diff database entries...'
-      Screenshot.delete_all(["is_compare = ?", true])
+      UiChanged::Screenshot.delete_all(["is_compare = ?", true])
 
       # does compare directory exist?
       # if so remove everything in it
       # if not, create it
       remove_folder_contents_or_create(compare_image_dir)
 
-      control_images = Screenshot.where(:is_control => true)
+      control_images = UiChanged::Screenshot.where(:is_control => true)
       control_images.each do |control_image|
         puts "comparing screenshots of url: " + control_image.url.to_s
-        test_image = Screenshot.where(:url => control_image.url, :is_test => true).first
+        test_image = UiChanged::Screenshot.where(:url => control_image.url, :is_test => true).first
         control_image_path = control_image.image_path_full
         test_image_path = test_image.image_path_full
 
@@ -141,7 +141,7 @@ module UiChanged
         diff_image_path_small = compare_image_dir + diff_image_file_name + "_small.png"
         diff_found = compare(control_image_path, test_image_path, diff_image_path, diff_image_path_small)
 
-        ss = Screenshot.find_or_create_by_control_id_and_test_id(control_image.id, test_image.id)
+        ss = UiChanged::Screenshot.find_or_create_by_control_id_and_test_id(control_image.id, test_image.id)
         ss.update_attributes(:image_file_name => diff_image_file_name,
                              :image_content_type => "png",
                              :url => control_image.url,
@@ -155,6 +155,9 @@ module UiChanged
         tick(status_msg)
         puts status_msg
       end
+
+      puts '----------- sending email message after compare -------------'
+      UiChanged::NotificationsMailer.new_message({:subject => "crawl complete!", :body => "sup"}).deliver
 
     end
 

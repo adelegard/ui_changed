@@ -50,7 +50,7 @@ Add the required resque.rb file to your config/initializers directory. This can 
 
     rails generate ui_changed:resque
 
-Feel free to change these defaults:
+Or add it yourself:
 
 ```ruby
 # config/initializers/resque.rb
