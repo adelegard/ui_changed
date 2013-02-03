@@ -4,15 +4,40 @@
 # end
 require 'resque/tasks'
 
-# desc "Use this to initiate crawling. Pass in "true" to start control crawl and "false" for test
-# rake ui_changed:crawl["true"]
-task :crawl, [:is_control] => :environment do |t, args|
-  is_control = args.is_control == "true" ? true : false
-
-  Screenshot.start_async_crawl_by_is_control(is_control)
+# rake ss:crawl_for_control
+task :crawl_for_control => :environment do
+  Screenshot.start_async_crawl_for_control
 end
 
-# rake ss_compare:begin
+# rake ss:crawl_for_test
+task :crawl_for_test => :environment do
+  Screenshot.start_async_crawl_for_test
+end
+
+# rake ss:crawl_for_control_and_test
+task :crawl_for_control_and_test => :environment do
+  Screenshot.crawl_for_control_and_test
+end
+
+# rake ss:crawl_for_control_and_compare
+task :crawl_for_control_and_compare => :environment do
+  Screenshot.start_async_crawl_for_control_and_compare
+end
+
+# rake ss:crawl_for_test_and_compare
+task :crawl_for_test_and_compare => :environment do
+  Screenshot.start_async_crawl_for_test_and_compare
+end
+
+# rake ss:compare
 task :compare => :environment do
   Screenshot.start_async_compare
+end
+
+task :start_selenium_server => :environment do
+  `java -jar #{Rails.root}/lib/tasks/selenium-server-standalone-2.28.0.jar`
+end
+
+task :start_resque => :environment do
+  `QUEUE=* rake environment resque:work`
 end
