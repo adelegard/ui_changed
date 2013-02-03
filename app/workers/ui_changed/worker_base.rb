@@ -72,6 +72,12 @@ module UiChanged
       # delete all screenshots 
       # where is_compare = true AND control_id
 
+      if is_control
+        UiChanged::NotificationsMailer.new_controls_message.deliver
+      else
+        UiChanged::NotificationsMailer.new_tests_message.deliver
+      end
+
       driver.quit
     end
 
@@ -156,8 +162,8 @@ module UiChanged
         puts status_msg
       end
 
-      puts '----------- sending email message after compare -------------'
-      UiChanged::NotificationsMailer.new_message({:subject => "crawl complete!", :body => "sup"}).deliver
+      UiChanged::NotificationsMailer.new_compares_message.deliver
+      UiChanged::NotificationsMailer.new_diffs_message.deliver
 
     end
 

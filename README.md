@@ -35,6 +35,12 @@ defaults: &defaults
   test_url: "http://some_test_url"
   skip_url_reg_exp:
   skip_query_strings: true
+  email_results_to:
+  email_after_control_crawl: true
+  email_after_test_crawl: true
+  email_after_compare: true
+  email_after_compare_with_diffs: true
+  email_after_compare_with_diffs_on_zero_found: true
 
 development:
   <<: *defaults
@@ -57,6 +63,15 @@ Or add it yourself:
 
 Resque.redis = "localhost:6379"
 Resque::Plugins::Status::Hash.expire_in = (24 * 60 * 60) # 24hrs in seconds
+
+# mailer queue name
+Resque::Mailer.default_queue_name = 'ui_changed_mailer'
+```
+
+Add the following to your routes.rb file:
+
+```ruby
+mount UiChanged::Engine, :at => "ui_changed"
 ```
 
 Ui_Changed uses ImageMagick under the covers. Installing it via [HomeBrew][homebrew] seems to be the easiest:

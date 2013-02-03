@@ -8,6 +8,12 @@ defaults: &defaults
   test_url: "http://localhost"
   skip_url_reg_exp: "(recipes|ingredients)"
   skip_query_strings: true
+  email_results_to:
+  email_after_control_crawl: true
+  email_after_test_crawl: true
+  email_after_compare: true
+  email_after_compare_with_diffs: true
+  email_after_compare_with_diffs_on_zero_found: false
 
 development:
   <<: *defaults
