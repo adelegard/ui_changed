@@ -122,7 +122,7 @@ Start up your Rails webserver. This is not strickly required if you intend on ju
 
     http://localhost:3000/ui_changed
 
-Hit the "Start All" button to perform the control, test, and comparison all at once. If you only want to generate the "Control" screenshots, then just click that one.
+Hit the "Start All" button to perform the control, test, and comparison all at once. If you only want to generate the "Control" screenshots, then just click that one (etc).
 
 ## Rake usage
 
