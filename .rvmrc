@@ -1,0 +1,5 @@
+rvm --create ruby-1.9.3-p0@ui_changed
+# Ensure that Bundler is installed, install it if it is not.
+if ! command -v bundle ; then
+  gem install bundler
+fi

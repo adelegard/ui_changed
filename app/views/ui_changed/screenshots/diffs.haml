@@ -1,0 +1,35 @@
+= render :partial => "screenshot/top_buttons", :locals => {:screenshots => @all_screenshots}
+.page-header
+  %h1 Diff Screenshots
+-if @all_screenshots.length > 0
+  %table.table.table-striped.screenshots.diffs
+    -if @search
+      %span= "Showing search results for \"#{@search}\""
+    %thead
+      %tr
+        %th
+        %th Control
+        %th Test
+        %th Diff
+        %th URL
+    %tbody
+      -@all_screenshots.each do |screenshots|
+        %tr
+          %input.f_id{:type => "hidden", :value => screenshots.diff_ss.id}
+          %input.diff_url{:type => "hidden", :value => screenshot_diff_path + "?diff_id=#{screenshots.diff_ss.id}"}
+          %td
+            %input.f_checkall_child{:type => "checkbox"}
+          %td
+            %a{:href => "#{screenshots.control_ss.displayable_image_path_full}"}
+              = image_tag("#{screenshots.control_ss.displayable_image_path_small_full}")
+          %td
+            %a{:href => "#{screenshots.test_ss.displayable_image_path_full}"}
+              = image_tag("#{screenshots.test_ss.displayable_image_path_small_full}")
+          %td
+            %a{:href => "#{screenshots.diff_ss.displayable_image_path_full}"}
+              = image_tag("#{screenshots.diff_ss.displayable_image_path_small_full}")
+          %td
+            %a{:href => screenshots.control_ss.url}= screenshots.control_ss.url
+  = will_paginate @diffs
+-else
+  No screenshots

@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  url: MyText
+  is_control: false
+  is_test: false
+  is_compare: false
+  diff_found: false
+  control_id: 1
+  test_id: 1
+  image_file_name: MyString
+  image_content_type: MyString
+  image_file_size: 1
+
+two:
+  url: MyText
+  is_control: false
+  is_test: false
+  is_compare: false
+  diff_found: false
+  control_id: 1
+  test_id: 1
+  image_file_name: MyString
+  image_content_type: MyString
+  image_file_size: 1

@@ -1,0 +1,21 @@
+= render :partial => "screenshot/top_buttons", :locals => {:screenshots => @ignored_urls}
+.page-header
+  %h1 Ignored Urls
+-if @ignored_urls.length > 0
+  %input.f_remove_url{:type => "hidden", :value => "/screenshot_ignore_url/"}
+  %table.table.table-striped.screenshots
+    %thead
+      %tr
+        %th
+        %th URL
+    %tbody
+      -@ignored_urls.each do |url|
+        %tr
+          %input.f_id{:type => "hidden", :value => url.id}
+          %td
+            %input.f_checkall_child{:type => "checkbox"}
+          %td
+            %a{:href => url.url}= url.url
+  = will_paginate @ignored_urls
+-else
+  %span No ignored urls

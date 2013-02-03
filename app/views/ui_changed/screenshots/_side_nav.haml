@@ -1,0 +1,37 @@
+.well
+  %ul.nav.nav-list
+    %li{:class => request.fullpath == screenshot_index_path ? "active" : ""}
+      %a{:href => screenshot_index_path}
+        %i.icon-home
+        Home
+    %li.divider
+    %li.f_sidenav_diffs{:class => request.fullpath.include?(screenshot_diffs_path) ? "active" : ""}
+      %a{:href => screenshot_diffs_path}
+        %i.icon-warning-sign
+        %span Diffs
+        %span.pull-right= @diff_count
+    %li.f_sidenav_controls{:class => request.fullpath.include?(screenshot_controls_path) ? "active" : ""}
+      %a{:href => screenshot_controls_path}
+        %i.icon-picture
+        %span Controls
+        %span.pull-right= @control_count
+    %li.f_sidenav_tests{:class => request.fullpath.include?(screenshot_tests_path) ? "active" : ""}
+      %a{:href => screenshot_tests_path}
+        %i.icon-picture
+        %span Tests
+        %span.pull-right= @test_count
+    %li.f_sidenav_compares{:class => request.fullpath.include?(screenshot_compares_path) ? "active" : ""}
+      %a{:href => screenshot_compares_path}
+        %i.icon-resize-small
+        %span Compares
+        %span.pull-right= @compare_count
+    %li{:class => request.fullpath.include?(screenshot_ignore_url_index_path) ? "active" : ""}
+      %a{:href => screenshot_ignore_url_index_path}
+        %i.icon-flag
+        %span Ignored
+        %span.pull-right= @ignore_count
+    %li.divider
+    %li{:class => request.fullpath.include?(screenshot_settings_path) ? "active" : ""}
+      %a{:href => screenshot_settings_path}
+        %i.icon-wrench
+        Settings

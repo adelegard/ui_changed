@@ -1,0 +1,17 @@
+= render :partial => "screenshot/top_buttons", :locals => {:screenshots => nil, :show_buttons => true}
+%h1 Diff Screenshot
+%h3
+  %a{:href => @control.url}= @control.url
+.diff_screenshots
+  .span3
+    -img_loc = "#{@control.displayable_image_path_full}"
+    %a{:href => img_loc}
+      = image_tag(img_loc)
+  .span3
+    -img_loc = "#{@test.displayable_image_path_full}"
+    %a{:href => img_loc}
+      = image_tag(img_loc)
+  .span3
+    -img_loc = "#{@diff.displayable_image_path_full}"
+    %a{:href => img_loc}
+      = image_tag(img_loc)

@@ -1,0 +1,25 @@
+body {margin-top: 40px;}
+
+.btn-toolbar form, .btn-toolbar form input, .btn-toolbar form button, .btn-toolbar form div {margin-bottom: 0;}
+
+.well {background-color: #FFF;}
+
+.crawl_btns .running {border: 3px solid red;}
+
+.diff_screenshots img, table.screenshots tbody tr td img {border: 1px solid #ccc; padding: 2px;}
+.diff_screenshots img:hover, table.screenshots tbody tr td img:hover {border: 1px solid #000;}
+.diffs tbody tr {cursor: pointer;}
+.diffs tbody tr td input:hover {cursor: default;}
+
+.crawling {margin-top: 5px;}
+.crawling .urls {overflow: scroll;}
+.crawling .last_img, .crawling .urls {float: left; width: 300px; height: 300px; padding: 7px; border: 1px solid #bbb; -webkit-border-radius: 6px; -moz-border-radius: 6px; border-radius: 6px; margin: 3px;}
+.crawling .urls li {text-align: left; -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px; padding: 2px 5px;}
+.crawling .urls li.active {background-color: #ddd;}
+.crawling .urls li:hover {cursor: pointer; background-color: #efefef;}
+.crawling .urls li a i.diff_found {color: red;}
+.crawling .urls li a span {margin-left: 3px;}
+.crawling .last_img {overflow: hidden;}
+.crawling .last_img .no_diff_found, .crawling .last_img .diff_found {text-align: center;}
+.crawling .last_img .no_diff_found .icon {font-size: 280px;}
+.crawling .last_img img {margin: 5px;}

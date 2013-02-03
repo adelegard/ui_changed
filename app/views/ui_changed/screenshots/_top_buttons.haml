@@ -1,0 +1,36 @@
+.btn-toolbar
+  -if screenshots && screenshots.length > 0
+    .btn-group
+      %label.btn.btn-toggle{:for => "checkall"}
+        %input#f_checkall{:type => "checkbox"}
+    .btn-group.f_actions
+      -if show_remove_test_and_diff request.fullpath
+        %button.btn.f_remove_test_and_diff{"data-href" => remove_diff_and_test_path, "data-original-title" => "Remove Test & Diff", :rel => "tooltip"} Remove Test & Diff
+      -if show_remove request.fullpath
+        %button.btn.f_remove{"data-original-title" => "Remove", :rel => "tooltip"} Remove
+      -if show_ignore_url request.fullpath
+        %button.btn.f_ignore{"data-original-title" => "Ignore", :rel => "tooltip"} Ignore Url
+      -if show_set_test_as_control request.fullpath
+        %button.btn.f_set_test_as_control{"data-original-title" => "Set as Control", :rel => "tooltip"} Set Test as Control
+    .btn-group
+      %button.btn.dropdown-toggle{"data-toggle" => "dropdown"}
+        Bulk Actions
+        %span.caret
+      %ul.dropdown-menu.f_bulk_actions
+        -if show_remove_test_and_diff request.fullpath
+          %li
+            %a.f_remove_all_diffs_and_tests{:href => "javascript:void(0);", "data-href" => remove_all_diffs_and_tests_path, "data-original-title" => "Remove All Diffs & Tests", :rel => "tooltip"} Remove All Tests & Diffs
+        -if show_remove request.fullpath
+          %li
+            %a.f_remove_all{:href => "javascript:void(0);", "data-href" => remove_all_path(request.fullpath), "data-original-title" => "Remove All", :rel => "tooltip"} Remove All
+        -if show_ignore_url request.fullpath
+          %li
+            %a.f_ignore_all_urls{:href => "javascript:void(0);", "data-href" => ignore_all_urls_path(request.fullpath), "data-original-title" => "Ignore All", :rel => "tooltip"} Ignore All Urls
+        -if show_set_test_as_control request.fullpath
+          %li
+            %a.f_set_all_tests_as_control{:href => "javascript:void(0);", "data-href" => screenshot_set_all_tests_as_control_path, "data-original-title" => "Set All Tests as Control", :rel => "tooltip"} Set All Tests as Control
+    .btn-group.pull-right
+      %form
+        .input-append
+          %input{:type => "text", :name => "search", :placeholder => "Search...", :value => @search}
+          %button.btn{:type => "submit"} Search

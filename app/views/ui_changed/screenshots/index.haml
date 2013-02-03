@@ -1,0 +1,31 @@
+%input.f_crawl_working{:type => "hidden", :value => @crawl_working}
+%input.f_on_home_page{:type => "hidden", :value => (request.fullpath == screenshot_index_path ? "true" : "false")}
+.btn-group.crawl_btns
+  %button.btn.btn-large.btn-success.f_crawl_action{"data-action" => screenshot_start_all_path, "data-original-title" => "Start control, then test, then compare", :rel => "tooltip"} Start All
+  %button.btn.btn-large.btn-success.dropdown-toggle{"data-toggle" => "dropdown"}
+    %span.caret
+  %ul.dropdown-menu
+    %li
+      %a.f_crawl_action{:href => "javascript:void(0);", "data-action" => screenshot_start_control_test_path, "data-original-title" => "Start control, then test", :rel => "tooltip"} Start Control & Test
+    %li
+      %a.f_crawl_action{:href => "javascript:void(0);", "data-action" => screenshot_start_control_compare_path, "data-original-title" => "Start control, then compare", :rel => "tooltip"} Start Control & Compare
+    %li
+      %a.f_crawl_action{:href => "javascript:void(0);", "data-action" => screenshot_start_test_compare_path, "data-original-title" => "Start test, then compare", :rel => "tooltip"} Start Test & Compare
+.btn-group.crawl_btns
+  %button.btn.btn-large.f_crawl_action{"data-action" => screenshot_start_control_path, "data-type" => "control"} Start Control
+  %button.btn.btn-large.f_crawl_action{"data-action" => screenshot_start_test_path, "data-type" => "test"} Start Test
+  %button.btn.btn-large.f_crawl_action{"data-action" => screenshot_start_compare_path, "data-type" => "compare"} Start Compare
+  -cancel_style = @crawl_working == "false" ? "display: none;" : ""
+.btn-group.crawl_btns
+  %button.btn.btn-large.btn-danger.f_crawl_action.f_cancel{"data-action" => screenshot_cancel_path, :style => cancel_style} Cancel
+.cmd_status_msg
+.crawling
+  %ul.urls
+  %a.last_img
+    .no_diff_found
+      %span No differences found
+      %i.icon.icon-ok
+    .diff_found
+      %span Differences found:
+    %img
+    .url

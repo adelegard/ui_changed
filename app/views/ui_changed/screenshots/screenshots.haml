@@ -1,0 +1,30 @@
+= render :partial => "screenshot/top_buttons", :locals => {:screenshots => @screenshots, :show_buttons => !@screenshots.empty?}
+.page-header
+  %h1= "#{@type} Screenshots"
+-if @screenshots.length > 0
+  %input.f_remove_url{:type => "hidden", :value => "/screenshot/"}
+  %input.f_set_test_as_control_url{:type => "hidden", :value => "#{screenshot_set_test_as_control_path}"}
+  %table.table.table-striped.screenshots
+    -if @search
+      %span= "Showing search results for \"#{@search}\""
+    %thead
+      %tr
+        %th
+        %th= @type
+        %th URL
+        %th Date
+    %tbody
+      -@screenshots.each do |screenshot|
+        %tr
+          %input.f_id{:type => "hidden", :value => screenshot.id}
+          %td
+            %input.f_checkall_child{:type => "checkbox"}
+          %td
+            %a{:href => "#{screenshot.displayable_image_path_full}"}
+              = image_tag("#{screenshot.displayable_image_path_small_full}")
+          %td
+            %a{:href => screenshot.url}= screenshot.url
+          %td= screenshot.updated_at.strftime("%m-%d-%Y %H:%M")
+  = will_paginate @screenshots
+-else
+  %span No screenshots
