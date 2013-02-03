@@ -156,9 +156,6 @@ module UiChanged
         puts status_msg
       end
 
-      puts '----------- email message after compare... sending...'
-      NotificationsMailer.new_message({:subject => "crawl complete!", :body => "sup"}).deliver
-
     end
 
     private

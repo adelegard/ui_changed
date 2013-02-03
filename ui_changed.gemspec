@@ -7,6 +7,7 @@ require "ui_changed/version"
 Gem::Specification.new do |s|
   s.name        = "ui_changed"
   s.version     = UiChanged::VERSION
+  s.date        = "2013-02-03"
   s.authors     = ["Alex Delegard"]
   s.email       = ["adelegard@gmail.com"]
   s.homepage    = "https://github.com/adelegard/ui_changed"
