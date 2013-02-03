@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.version     = UiChanged::VERSION
   s.authors     = ["Alex Delegard"]
   s.email       = ["adelegard@gmail.com"]
-  s.homepage    = ""
+  s.homepage    = "https://github.com/adelegard/ui_changed"
   s.summary     = "Rails plugin for crawling domains for detecting differences in the UI"
   s.description = "Rails plugin for crawling domains for detecting differences in the UI"
 
@@ -25,14 +25,13 @@ Gem::Specification.new do |s|
   s.add_dependency "rmagick", "~> 2.13.1"
   s.add_dependency 'anemone'
   s.add_dependency 'selenium-webdriver'
+  s.add_dependency "jquery-rails"
 
   s.add_dependency 'font-awesome-sass-rails'
 
   s.add_dependency 'resque'
   s.add_dependency 'resque_mailer'
   s.add_dependency 'resque-status'
-
-  # s.add_dependency "jquery-rails"
 
   s.add_development_dependency "mysql2"
 end

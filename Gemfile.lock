@@ -7,6 +7,7 @@ PATH
       bootstrap-will_paginate
       font-awesome-sass-rails
       haml-rails
+      jquery-rails
       rails (~> 3.2.11)
       resque
       resque-status

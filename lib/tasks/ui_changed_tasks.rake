@@ -3,6 +3,9 @@
 #   # Task goes here
 # end
 require 'ui_changed'
+require 'resque/tasks'
+
+task "resque:setup" => :environment
 
 # rake ss:crawl_for_control
 task :crawl_for_control => :environment do
@@ -36,8 +39,4 @@ end
 
 task :start_selenium_server => :environment do
   `java -jar #{Rails.root}/lib/tasks/selenium-server-standalone-2.28.0.jar`
-end
-
-task :start_resque => :environment do
-  `QUEUE=* rake environment resque:work`
 end

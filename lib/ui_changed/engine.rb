@@ -5,6 +5,7 @@ require 'bootstrap-will_paginate'
 require "rmagick"
 require 'anemone'
 require 'selenium-webdriver'
+require "jquery-rails"
 
 require 'font-awesome-sass-rails'
 
