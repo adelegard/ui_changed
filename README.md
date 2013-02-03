@@ -10,6 +10,10 @@ Ui_Changed works with Rails 3.1 and up. You can add it to your Gemfile with:
 gem 'ui_changed'
 ```
 
+Then install it with:
+
+  bundle install
+
 Ui_Changed needs some database tables generated in order to function properly. To add these to your existing database:
 
     rake ui_changed:install:migrations
@@ -41,6 +45,17 @@ test:
 production:
   <<: *defaults
 ```
+
+Add the required resque.rb file to your config/initializers directory. This can be done with the following built-in generator:
+
+  rails generate ui_changed:resque
+
+Feel free to change these defaults:
+
+  # config/initializers/resque.rb
+
+  Resque.redis = "localhost:6379"
+  Resque::Plugins::Status::Hash.expire_in = (24 * 60 * 60) # 24hrs in seconds
 
 Ui_Changed uses ImageMagick under the covers. Installing it via [HomeBrew][homebrew] seems to be the easiest:
 
