@@ -14,7 +14,8 @@ Gem::Specification.new do |s|
   s.summary     = "Rails plugin for crawling domains for detecting differences in the UI"
   s.description = "Rails plugin for crawling domains for detecting differences in the UI"
 
-  s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.rdoc"]
+#  s.extra_rdoc_files = %w(README.md LICENSE)
+  s.files = Dir["{app,config,db,lib}/**/*"]
   s.test_files = Dir["test/**/*"]
 
   s.add_dependency "rails", "~> 3.2.11"
