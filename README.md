@@ -12,15 +12,15 @@ gem 'ui_changed'
 
 Then install it with:
 
-  bundle install
+    bundle install
 
 Ui_Changed needs some database tables generated in order to function properly. To add these to your existing database:
 
-  rake ui_changed:install:migrations
+    rake ui_changed:install:migrations
 
 This command copies over the necessary migrations from ui_changed. To execute these run the following
 
-  rake db:migrate
+    rake db:migrate
     
 Add ui_changed.yml to your config directory:
 
@@ -48,41 +48,43 @@ production:
 
 Add the required resque.rb file to your config/initializers directory. This can be done with the following built-in generator:
 
-  rails generate ui_changed:resque
+    rails generate ui_changed:resque
 
 Feel free to change these defaults:
 
-  # config/initializers/resque.rb
+```ruby
+# config/initializers/resque.rb
 
-  Resque.redis = "localhost:6379"
-  Resque::Plugins::Status::Hash.expire_in = (24 * 60 * 60) # 24hrs in seconds
+Resque.redis = "localhost:6379"
+Resque::Plugins::Status::Hash.expire_in = (24 * 60 * 60) # 24hrs in seconds
+```
 
 Ui_Changed uses ImageMagick under the covers. Installing it via [HomeBrew][homebrew] seems to be the easiest:
 
-  brew install imagemagick
+    brew install imagemagick
 
 
 [Download][selenium_downloads] the selenium-server-standalone jar file and place it someplace safe:
 
-  selenium-server-standalone-2.##.0.jar
+    selenium-server-standalone-2.##.0.jar
 
 ## Usage
 
 Start up your resque worker. This guy will do all of our work in the background:
 
-  rake resque:work QUEUE=*
+    rake resque:work QUEUE=*
 
 Start up your selenium server. This guy does the work of saving our screenshots to the filesystem:
 
-  java -jar path/to/your/selenium_server/selenium-server-standalone-2.##.0.jar
+    java -jar path/to/your/selenium_server/selenium-server-standalone-2.##.0.jar
 
 Start up your Rails webserver. This is not strickly required if you intend on just using the rake tasks.
 
-  rails s
+    rails s
 
 ... and browse to
 
-  http://localhost:3000/ui_changed
+    http://localhost:3000/ui_changed
 
 Hit the "Start All" button to perform the control, test, and comparison all at once. If you only want to generate the "Control" screenshots, then just click that one.
 
@@ -90,12 +92,12 @@ Hit the "Start All" button to perform the control, test, and comparison all at o
 
 A good amount of the functionality exposed via the web interface can also be done via Rake tasks:
 
-  rake ui_changed:crawl_for_control
-  rake ui_changed:crawl_for_test
-  rake ui_changed:crawl_for_control_and_test
-  rake ui_changed:crawl_for_control_and_compare
-  rake ui_changed:crawl_for_test_and_compare
-  rake ui_changed:compare
+    rake ui_changed:crawl_for_control
+    rake ui_changed:crawl_for_test
+    rake ui_changed:crawl_for_control_and_test
+    rake ui_changed:crawl_for_control_and_compare
+    rake ui_changed:crawl_for_test_and_compare
+    rake ui_changed:compare
 
 ## Contributing to Ui_Changed
 
