@@ -68,6 +68,23 @@ Resque::Plugins::Status::Hash.expire_in = (24 * 60 * 60) # 24hrs in seconds
 Resque::Mailer.default_queue_name = 'ui_changed_mailer'
 ```
 
+If you want Ui_Changed to send out emails, then you will need to configure an action mailer in your application/development/production rb file. For example:
+
+```ruby
+config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+
+config.action_mailer.smtp_settings = {
+  :address              => "smtp.gmail.com",
+  :port                 => 587,
+  :domain               => "gmail.com",
+  :user_name            => "your_gmail_username@gmail.com",
+  :password             => "your_gmail_password",
+  :authentication       => :plain,
+  :enable_starttls_auto => true
+}
+
+```
+
 Add the following to your routes.rb file:
 
 ```ruby
@@ -85,9 +102,13 @@ Ui_Changed uses ImageMagick under the covers. Installing it via [HomeBrew][homeb
 
 ## Usage
 
-Start up your resque worker. This guy will do all of our work in the background:
+Start up your resque crawl worker. This guy will do all of our crawling/comparing work in the background:
 
-    rake resque:work QUEUE=*
+    rake resque:work QUEUE=crawl
+
+Start up your resque email worker. This guy will send out emails in the background:
+
+    rake resque:work QUEUE=ui_changed_mailer
 
 Start up your selenium server. This guy does the work of saving our screenshots to the filesystem:
 
