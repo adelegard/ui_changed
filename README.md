@@ -42,7 +42,7 @@ production:
   <<: *defaults
 ```
 
-Ui_Changed uses ImageMagick under the covers. Install it via [HomeBrew][homebrew] seems to be the easiest:
+Ui_Changed uses ImageMagick under the covers. Installing it via [HomeBrew][homebrew] seems to be the easiest:
 
     brew install imagemagick
 
@@ -61,7 +61,7 @@ Start up your selenium server. This guy does the work of saving our screenshots 
 
     java -jar path/to/your/selenium_server/selenium-server-standalone-2.##.0.jar
 
-Start up your Rails webserver
+Start up your Rails webserver. This is not strickly required if you intend on just using the rake tasks.
 
     rails s
 
@@ -75,12 +75,12 @@ Hit the "Start All" button to perform the control, test, and comparison all at o
 
 A good amount of the functionality exposed via the web interface can also be done via Rake tasks:
 
-    rake crawl_for_control
-    rake crawl_for_test
-    rake crawl_for_control_and_test
-    rake crawl_for_control_and_compare
-    rake crawl_for_test_and_compare
-    rake compare
+    rake ui_changed:crawl_for_control
+    rake ui_changed:crawl_for_test
+    rake ui_changed:crawl_for_control_and_test
+    rake ui_changed:crawl_for_control_and_compare
+    rake ui_changed:crawl_for_test_and_compare
+    rake ui_changed:compare
 
 ## Contributing to Ui_Changed
 
