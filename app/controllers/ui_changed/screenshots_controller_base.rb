@@ -15,6 +15,9 @@ module UiChanged
     protected
 
     def authenticate
+      if !UiChanged::ConfigHelper.auth_username
+        return true
+      end
       authenticate_or_request_with_http_basic do |username, password|
         username == UiChanged::ConfigHelper.auth_username && password == UiChanged::ConfigHelper.auth_password
       end

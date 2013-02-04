@@ -2,8 +2,8 @@ defaults: &defaults
   control_path: "public/screenshots/control/"
   test_path: "public/screenshots/test/"
   compare_path: "public/screenshots/compare/"
-  auth_username: "foo2"
-  auth_password: "bar2"
+  auth_username:
+  auth_password:
   control_url: "http://localhost"
   test_url: "http://localhost"
   skip_url_reg_exp: "(recipes|ingredients)"
