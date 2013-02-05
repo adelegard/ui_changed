@@ -11,7 +11,6 @@ gem "bootstrap-sass"
 gem 'will_paginate'
 gem "haml-rails"
 gem 'bootstrap-will_paginate'
-gem "rmagick"
 gem 'anemone'
 gem 'selenium-webdriver'
 gem "jquery-rails"

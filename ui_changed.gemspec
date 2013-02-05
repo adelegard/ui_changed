@@ -24,7 +24,6 @@ Gem::Specification.new do |s|
   s.add_dependency 'will_paginate'
   s.add_dependency "haml-rails"
   s.add_dependency 'bootstrap-will_paginate'
-  s.add_dependency "rmagick"
   s.add_dependency 'anemone'
   s.add_dependency 'selenium-webdriver'
   s.add_dependency "jquery-rails"

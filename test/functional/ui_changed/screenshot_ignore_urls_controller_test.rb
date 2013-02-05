@@ -11,12 +11,7 @@ module UiChanged
       assert_response :success
       assert_not_nil assigns(:screenshot_ignore_urls)
     end
-  
-    test "should get new" do
-      get :new
-      assert_response :success
-    end
-  
+
     test "should create screenshot_ignore_url" do
       assert_difference('ScreenshotIgnoreUrl.count') do
         post :create, screenshot_ignore_url: { url: @screenshot_ignore_url.url }

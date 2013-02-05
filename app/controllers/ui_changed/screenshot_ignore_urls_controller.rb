@@ -10,7 +10,6 @@ module UiChanged
                                                                                       :order => params[:sort])
     end
 
-    # these ignore methods should be in a new ignore controller
     def add
       ids = params[:id].split(",")
       ids.each do |id|

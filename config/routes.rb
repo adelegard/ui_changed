@@ -8,7 +8,6 @@ UiChanged::Engine.routes.draw do
   match '/screenshots/compares' => 'screenshots#compares', :as => :screenshot_compares
   match '/screenshots/controls' => 'screenshots#controls', :as => :screenshot_controls
   match '/screenshots/tests' => 'screenshots#tests', :as => :screenshot_tests
-  match '/screenshots/ignored' => 'screenshots#ignored', :as => :screenshot_ignored
   match '/screenshots/diff' => 'screenshots#diff', :as => :screenshot_diff
 
   match '/screenshots/remove_diff_and_test' => 'screenshots#remove_diff_and_test', :as => :remove_diff_and_test, :via => :delete
@@ -35,7 +34,7 @@ UiChanged::Engine.routes.draw do
   match '/screenshots_ignore_urls/add_all_diffs' => 'screenshot_ignore_urls#add_all_diffs', :as => :screenshot_ignore_url_add_all_diffs, :via => :post
   match '/screenshots_ignore_urls/destroy_all' => 'screenshot_ignore_urls#destroy_all', :as => :screenshot_ignore_url_destroy_all, :via => :delete
 
-  resources :screenshot_ignore_urls
-  resources :screenshots
+  resources :screenshot_ignore_urls, :only => [:index]
+  resources :screenshots, :only => [:index]
 
 end

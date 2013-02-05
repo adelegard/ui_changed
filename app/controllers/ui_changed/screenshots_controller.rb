@@ -111,15 +111,6 @@ module UiChanged
       render "ui_changed/screenshots/screenshots"
     end
 
-    # GET /screenshots/ignored
-    # this should just be the index in ScreenshotIgnoreUrl controller
-    def ignored
-      params[:sort] ||= "url asc"
-      @ignored_urls = UiChanged::ScreenshotIgnoreUrl.paginate(:page => params[:page],
-                                                              :per_page => params[:per_page],
-                                                              :order => params[:sort])
-    end
-
     # GET /screenshots/diff
     def diff
       @diff = UiChanged::Screenshot.find(params[:diff_id])
