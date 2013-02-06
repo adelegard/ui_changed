@@ -12,7 +12,6 @@ PATH
       resque
       resque-status
       resque_mailer
-      rmagick
       selenium-webdriver
       will_paginate
 
@@ -132,7 +131,6 @@ GEM
       resque (~> 1.19)
     resque_mailer (2.2.2)
       actionmailer (~> 3.0)
-    rmagick (2.13.1)
     robotex (1.0.0)
     rubyzip (0.9.9)
     sass (3.2.5)
@@ -183,7 +181,6 @@ DEPENDENCIES
   resque
   resque-status
   resque_mailer
-  rmagick
   sass-rails (~> 3.2.3)
   selenium-webdriver
   uglifier (>= 1.0.3)
