@@ -8,7 +8,6 @@ module UiChanged
     # GET /screenshots
     def index
       @crawl_working = is_any_job_running_or_queued ? "true" : "false"
-      puts "skip urls: " + UiChanged::ScreenshotIgnoreUrl.all_ignores_urls_as_reg_exp.to_s
     end
 
     # GET /screenshots/crawl_status.json
@@ -61,6 +60,10 @@ module UiChanged
         puts 'cancelling job_id: ' + job_id.to_s
         Resque::Plugins::Status::Hash.kill(job_id)
       end
+
+      # and for good measure
+      `redis-cli FLUSHALL`
+
       head :ok
     end
 

@@ -22,4 +22,3 @@ body {margin-top: 40px;}
 .crawling .last_img {overflow: hidden;}
 .crawling .last_img .no_diff_found, .crawling .last_img .diff_found {text-align: center;}
 .crawling .last_img .no_diff_found .icon {font-size: 280px;}
-.crawling .last_img img {margin: 5px;}

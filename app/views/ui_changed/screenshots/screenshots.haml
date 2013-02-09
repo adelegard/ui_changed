@@ -2,7 +2,7 @@
 .page-header
   %h1= "#{@type} Screenshots"
 -if @screenshots.length > 0
-  %input.f_remove_url{:type => "hidden", :value => "/screenshot/"}
+  %input.f_remove_url{:type => "hidden", :value => "/ui_changed/screenshots/"}
   %input.f_set_test_as_control_url{:type => "hidden", :value => "#{screenshot_set_test_as_control_path}"}
   %table.table.table-striped.screenshots
     -if @search

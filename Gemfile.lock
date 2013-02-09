@@ -54,6 +54,13 @@ GEM
     bootstrap-will_paginate (0.0.9)
       will_paginate
     builder (3.0.4)
+    capybara (2.0.2)
+      mime-types (>= 1.16)
+      nokogiri (>= 1.3.3)
+      rack (>= 1.0.0)
+      rack-test (>= 0.5.4)
+      selenium-webdriver (~> 2.0)
+      xpath (~> 1.0.0)
     childprocess (0.3.7)
       ffi (~> 1.0, >= 1.0.6)
     coffee-rails (3.2.2)
@@ -63,9 +70,23 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.4.0)
+    columnize (0.3.6)
+    debugger (1.3.0)
+      columnize (>= 0.3.1)
+      debugger-linecache (~> 1.1.1)
+      debugger-ruby_core_source (~> 1.1.7)
+    debugger-linecache (1.1.2)
+      debugger-ruby_core_source (>= 1.1.1)
+    debugger-ruby_core_source (1.1.7)
+    diff-lcs (1.1.3)
     erubis (2.7.0)
     execjs (1.4.0)
       multi_json (~> 1.0)
+    factory_girl (4.2.0)
+      activesupport (>= 3.0.0)
+    factory_girl_rails (4.2.0)
+      factory_girl (~> 4.2.0)
+      railties (>= 3.0.0)
     ffi (1.3.1)
     font-awesome-sass-rails (3.0.0.1)
       railties (>= 3.1.1)
@@ -132,6 +153,17 @@ GEM
     resque_mailer (2.2.2)
       actionmailer (~> 3.0)
     robotex (1.0.0)
+    rspec-core (2.12.2)
+    rspec-expectations (2.12.1)
+      diff-lcs (~> 1.1.3)
+    rspec-mocks (2.12.2)
+    rspec-rails (2.12.2)
+      actionpack (>= 3.0)
+      activesupport (>= 3.0)
+      railties (>= 3.0)
+      rspec-core (~> 2.12.0)
+      rspec-expectations (~> 2.12.0)
+      rspec-mocks (~> 2.12.0)
     rubyzip (0.9.9)
     sass (3.2.5)
     sass-rails (3.2.6)
@@ -165,6 +197,8 @@ GEM
       rack (>= 1.0.0)
     websocket (1.0.7)
     will_paginate (3.0.4)
+    xpath (1.0.0)
+      nokogiri (~> 1.3)
 
 PLATFORMS
   ruby
@@ -173,7 +207,10 @@ DEPENDENCIES
   anemone
   bootstrap-sass
   bootstrap-will_paginate
+  capybara
   coffee-rails (~> 3.2.1)
+  debugger
+  factory_girl_rails
   font-awesome-sass-rails
   haml-rails
   jquery-rails
@@ -181,6 +218,7 @@ DEPENDENCIES
   resque
   resque-status
   resque_mailer
+  rspec-rails
   sass-rails (~> 3.2.3)
   selenium-webdriver
   uglifier (>= 1.0.3)

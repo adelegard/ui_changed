@@ -4,11 +4,11 @@ require 'fileutils'
 
 module UiChanged
   class Screenshot < ActiveRecord::Base
-    attr_accessible :is_control,
+    attr_accessible :url,
+                    :is_control,
                     :is_test,
                     :is_compare,
                     :diff_found,
-                    :url,
                     :control_id,
                     :test_id,
                     :image_file_name,
@@ -16,6 +16,36 @@ module UiChanged
                     :image_content_type,
                     :displayable_image_path_full,
                     :displayable_image_path_small_full
+
+    validates :url, :presence => true, :format => URI::regexp(%w(http https))
+    validates :image_file_name, :presence => true
+    validates :image_file_size, :presence => true
+    validates :image_content_type, :presence => true
+
+    validate :check_only_one_type
+    validate :check_diff_found
+    validate :check_compare_ids
+    validate :check_image_content_type
+
+    def check_only_one_type
+      types = [is_control, is_test, is_compare]
+      if types.count(true) != 1
+        errors[:base] << 'screenshot can only have one is value set to true'
+      end
+    end
+    def check_diff_found
+      if diff_found && !( !is_control && !is_test && is_compare )
+        errors[:base] << 'when diff found is set it must be of type is_compare'
+      end
+    end
+    def check_compare_ids
+      if is_compare && (control_id == nil || test_id == nil)
+        errors[:base] << 'is_compare screenshots must have their control_id and test_id set'
+      end
+    end
+    def check_image_content_type
+      errors.add(:image_content_type, "can only be png") unless image_content_type == "png"
+    end
 
     self.per_page = 15
 

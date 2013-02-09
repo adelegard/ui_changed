@@ -41,7 +41,7 @@ if (typeof(Screenshots) === 'undefined') {
       Screenshots._ajax_with_type($(this).attr("data-href") + "?id=" + Screenshots._get_checked_ids(), "DELETE");
     },
     _actions_ignore: function() {
-      Screenshots._ajax_with_type("/screenshot_ignore_url/add?id=" + Screenshots._get_checked_ids(), "POST");
+      Screenshots._ajax_with_type("/ui_changed/screenshot_ignore_urls/add?id=" + Screenshots._get_checked_ids(), "POST");
     },
     _actions_set_test_as_control: function() {
       Screenshots._ajax_with_type($('.f_set_test_as_control_url').val() + '?id=' + Screenshots._get_checked_ids(), "POST");
@@ -113,7 +113,7 @@ if (typeof(Screenshots) === 'undefined') {
     _update_crawl_status: function() {
       $.ajax({
         dataType: "json",
-        url: "screenshots/crawl_status.json",
+        url: "ui_changed/screenshots/crawl_status.json",
         success: function(data) {
           var screenshots = data[0].screenshots;
           var running_status = data[0].worker.running_status;
@@ -132,11 +132,9 @@ if (typeof(Screenshots) === 'undefined') {
           for (var i=0; i < screenshots.length; i++) {
             Screenshots._add_crawl_url(screenshots[i]);
           }
-          if (screenshots.length > 0) {
-            var last = screenshots[screenshots.length-1];
-
-            /* if the user isn't looking at other rows, then update the image */
-            if (!Screenshots._clicked_urls_row) Screenshots._add_crawl_image(last);
+          if (screenshots.length > 0 && !Screenshots._clicked_urls_row) {
+            /* if the user isn't looking at other rows, then show the most recent image */
+            Screenshots._show_top_most_image();
           }
 
 //          $('.cmd_status_msg').text('running: ' + running_status + ' first: ' + first_status);
@@ -147,6 +145,24 @@ if (typeof(Screenshots) === 'undefined') {
           }
           $('.crawl_btns button').removeAttr("disabled");
           $('.crawl_btns .f_cancel').hide();
+        }
+      });
+    },
+
+    _show_top_most_image: function() {
+      $('.crawling .urls li').each(function() {
+        var elem = $(this);
+        var anchor = elem.find('a');
+        if (anchor.hasClass('active')) return;
+        var src = anchor.attr('data-src');
+        if (typeof src !== 'undefined') {
+          Screenshots._add_crawl_image_with_src({
+            'file_name': anchor.attr('data-alt'),
+            'src': src,
+            'crawl_url': anchor.attr('data-href'),
+            'is_compare': anchor.attr('data-type') === 'compare',
+            'diff_found': anchor.find('i').hasClass('diff_found')});
+          return false;
         }
       });
     },
@@ -164,7 +180,7 @@ if (typeof(Screenshots) === 'undefined') {
         type = "control";
       } else if (screenshot.is_compare === true) {
         diff_class = screenshot.diff_found === true ? " diff_found" : " no_diff_found";
-        type = "diff";
+        type = "compare";
       }
 
       var file_name = screenshot.image_file_name;
@@ -187,23 +203,7 @@ if (typeof(Screenshots) === 'undefined') {
         existing.find('i').attr('class', icon_class);
         existing.attr('data-alt', file_name);
         existing.attr('data-src', src);
-        Screenshots._add_crawl_image_with_src({
-          'file_name': file_name,
-          'src':src,
-          'crawl_url': screenshot.url,
-          'is_compare': screenshot.is_compare,
-          'diff_found': screenshot.diff_found});
       }
-    },
-
-    _add_crawl_image: function(screenshot) {
-      if (screenshot.image_file_name === null) return;
-      Screenshots._add_crawl_image_with_src({
-        'file_name': screenshot.image_file_name,
-        'src':screenshot.displayable_image_path_full,
-        'crawl_url': screenshot.url,
-        'is_compare': screenshot.is_compare,
-        'diff_found': screenshot.diff_found});
     },
 
     _add_crawl_image_with_src: function(params) {

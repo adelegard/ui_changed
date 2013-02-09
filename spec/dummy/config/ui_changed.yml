@@ -4,8 +4,8 @@ defaults: &defaults
   compare_path: "public/screenshots/compare/"
   auth_username:
   auth_password:
-  control_url: "http://localhost"
-  test_url: "http://localhost"
+  control_url: "http://github.com"
+  test_url: "http://github.com"
   skip_url_reg_exp: "(recipes|ingredients)"
   skip_query_strings: true
   email_results_to:

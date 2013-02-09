@@ -16,7 +16,7 @@ Gem::Specification.new do |s|
 
 #  s.extra_rdoc_files = %w(README.md LICENSE)
   s.files = Dir["{app,config,db,lib}/**/*"]
-  s.test_files = Dir["test/**/*"]
+  s.test_files = Dir["spec/**/*"]
 
   s.add_dependency "rails", "~> 3.2.11"
 
@@ -33,6 +33,12 @@ Gem::Specification.new do |s|
   s.add_dependency 'resque'
   s.add_dependency 'resque_mailer'
   s.add_dependency 'resque-status'
+
+  # testing
+  s.add_development_dependency 'rspec-rails'
+  s.add_development_dependency 'capybara'
+  s.add_development_dependency 'factory_girl_rails'
+
 
   s.add_development_dependency "mysql2"
 end

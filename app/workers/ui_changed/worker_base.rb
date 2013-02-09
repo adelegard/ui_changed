@@ -46,7 +46,7 @@ module UiChanged
       driver.manage.window.resize_to(1024, 768) # this doesn't work (i dont think)
       driver.manage.timeouts.implicit_wait = 60 # seconds
 
-      urls_to_skip = UiChanged::ScreenshotIgnoreUrl.all_ignores_urls_as_reg_exp
+      urls_to_skip = Regexp.new(UiChanged::ConfigHelper.skip_url_reg_exp)
       puts urls_to_skip.to_s
 
       skip_query_strings = UiChanged::ConfigHelper.skip_query_strings ||= false
@@ -82,16 +82,15 @@ module UiChanged
     end
 
     def crawl_and_save_single_url(image_dir, is_control, page_url, driver)
-  #    ss_ignore = ScreenshotIgnoreUrl.where(:url => page_url)
-  #    if ss_ignore.size == 0
-  #      return
-  #    end
-
       if is_control
-        ss = UiChanged::Screenshot.find_or_create_by_url_and_is_control(page_url.to_s, true)
+        ss = UiChanged::Screenshot.find_or_initialize_by_url_and_is_control(page_url.to_s, true)
       else
-        ss = UiChanged::Screenshot.find_or_create_by_url_and_is_test(page_url.to_s, true)
+        ss = UiChanged::Screenshot.find_or_initialize_by_url_and_is_test(page_url.to_s, true)
       end
+
+      # save without validation because we need the id in the file names
+      ss.save(:validate => false)
+
       puts 'found or created ss id: ' + ss.id.to_s
       image_file_name = "image_" + ss.id.to_s
       image_file_name_small = image_file_name + "_small"
@@ -138,7 +137,7 @@ module UiChanged
       control_images = UiChanged::Screenshot.where(:is_control => true)
       control_images.each do |control_image|
         puts "comparing screenshots of url: " + control_image.url.to_s
-        test_image = UiChanged::Screenshot.where(:url => control_image.url, :is_test => true).first
+        test_image = UiChanged::Screenshot.find_by_url_and_is_test(control_image.url, true)
         control_image_path = control_image.image_path_full
         test_image_path = test_image.image_path_full
 
@@ -147,7 +146,7 @@ module UiChanged
         diff_image_path_small = compare_image_dir + diff_image_file_name + "_small.png"
         diff_found = compare(control_image_path, test_image_path, diff_image_path, diff_image_path_small)
 
-        ss = UiChanged::Screenshot.find_or_create_by_control_id_and_test_id(control_image.id, test_image.id)
+        ss = UiChanged::Screenshot.find_or_initialize_by_control_id_and_test_id(control_image.id, test_image.id)
         ss.update_attributes(:image_file_name => diff_image_file_name,
                              :image_content_type => "png",
                              :url => control_image.url,

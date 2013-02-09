@@ -1,0 +1,418 @@
+[0.001][INFO]:      ChromeDriver 26.0.1383.0 /usr/local/bin/chromedriver
+[0.215][FINE]:      Initializing session with capabilities {
+   "browserName": "chrome",
+   "chrome.detach": true,
+   "chromeOptions": {
+      "detach": true
+   },
+   "cssSelectorsEnabled": true,
+   "javascriptEnabled": true,
+   "nativeEvents": false,
+   "platform": "ANY",
+   "rotatable": false,
+   "takesScreenshot": false,
+   "version": ""
+}
+
+[0.217][INFO]:      Using named testing interface
+[1.489][INFO]:      Connected to Chrome successfully. Version: 24.0.1312.57
+[1.535][FINE]:      Command received (/session/928e1700332a3243b02e5f733c639a17)
+[1.535][FINE]:      Command finished (/session/928e1700332a3243b02e5f733c639a17) with response {
+   "sessionId": "928e1700332a3243b02e5f733c639a17",
+   "status": 0,
+   "value": {
+      "acceptSslCerts": false,
+      "applicationCacheEnabled": false,
+      "browserConnectionEnabled": false,
+      "browserName": "chrome",
+      "chrome.chromedriverVersion": "26.0.1383.0",
+      "cssSelectorsEnabled": true,
+      "databaseEnabled": false,
+      "handlesAlerts": true,
+      "javascriptEnabled": true,
+      "locationContextEnabled": false,
+      "nativeEvents": true,
+      "platform": "mac",
+      "rotatable": false,
+      "takesScreenshot": true,
+      "version": "24.0.1312.57",
+      "webStorageEnabled": true
+   }
+}
+
+[1.539][FINE]:      Command received (/session/928e1700332a3243b02e5f733c639a17/window/current/size) with params {
+   "height": 768,
+   "width": 1024
+}
+
+[1.539][FINER]:     Waiting for all views to stop loading...
+[1.540][FINER]:     Done waiting for all views to stop loading
+[1.561][FINER]:     Waiting for all views to stop loading...
+[1.575][FINER]:     Done waiting for all views to stop loading
+[1.575][FINE]:      Command finished (/session/928e1700332a3243b02e5f733c639a17/window/current/size) with response {
+   "sessionId": "928e1700332a3243b02e5f733c639a17",
+   "status": 0,
+   "value": {
+
+   }
+}
+
+[1.576][FINE]:      Command received (/session/928e1700332a3243b02e5f733c639a17/timeouts/implicit_wait) with params {
+   "ms": 60000
+}
+
+[1.576][FINER]:     Waiting for all views to stop loading...
+[1.577][FINER]:     Done waiting for all views to stop loading
+[1.577][FINER]:     Waiting for all views to stop loading...
+[1.577][FINER]:     Done waiting for all views to stop loading
+[1.577][FINE]:      Command finished (/session/928e1700332a3243b02e5f733c639a17/timeouts/implicit_wait) with response {
+   "sessionId": "928e1700332a3243b02e5f733c639a17",
+   "status": 0,
+   "value": {
+
+   }
+}
+
+[2.357][FINE]:      Command received (/session/928e1700332a3243b02e5f733c639a17/url) with params {
+   "url": "http://github.com/"
+}
+
+[2.357][FINER]:     Waiting for all views to stop loading...
+[2.358][FINER]:     Done waiting for all views to stop loading
+[3.656][FINER]:     Waiting for all views to stop loading...
+[3.657][FINER]:     Done waiting for all views to stop loading
+[3.657][FINE]:      Command finished (/session/928e1700332a3243b02e5f733c639a17/url) with response {
+   "sessionId": "928e1700332a3243b02e5f733c639a17",
+   "status": 0,
+   "value": {
+
+   }
+}
+
+[3.659][FINE]:      Command received (/session/928e1700332a3243b02e5f733c639a17/screenshot)
+[3.659][FINER]:     Waiting for all views to stop loading...
+[3.661][FINER]:     Done waiting for all views to stop loading
+[3.794][FINER]:     Waiting for all views to stop loading...
+[3.795][FINER]:     Done waiting for all views to stop loading
+[3.795][FINE]:      Command finished (/session/928e1700332a3243b02e5f733c639a17/screenshot) with response {
+   "sessionId": "928e1700332a3243b02e5f733c639a17",
+   "status": 0,
+   "value": "iVBORw0KGgoAAAANSUhEUgAABAAAAATSCAIAAACviQHwAAAgAElEQVR4nOzdeVxU5f4H8O85szKsA4IKgii5gIr7AiLuS4ZLp..."
+}
+
+[4.050][FINE]:      Command received (/session/928e1700332a3243b02e5f733c639a17/url) with params {
+   "url": "https://github.com/"
+}
+
+[4.050][FINER]:     Waiting for all views to stop loading...
+[4.066][FINER]:     Done waiting for all views to stop loading
+[4.329][FINER]:     Waiting for all views to stop loading...
+[4.336][FINER]:     Done waiting for all views to stop loading
+[4.336][FINE]:      Command finished (/session/928e1700332a3243b02e5f733c639a17/url) with response {
+   "sessionId": "928e1700332a3243b02e5f733c639a17",
+   "status": 0,
+   "value": {
+
+   }
+}
+
+[4.338][FINE]:      Command received (/session/928e1700332a3243b02e5f733c639a17/screenshot)
+[4.338][FINER]:     Waiting for all views to stop loading...
+[4.338][FINER]:     Done waiting for all views to stop loading
+[4.462][FINER]:     Waiting for all views to stop loading...
+[4.462][FINER]:     Done waiting for all views to stop loading
+[4.462][FINE]:      Command finished (/session/928e1700332a3243b02e5f733c639a17/screenshot) with response {
+   "sessionId": "928e1700332a3243b02e5f733c639a17",
+   "status": 0,
+   "value": "iVBORw0KGgoAAAANSUhEUgAABAAAAATSCAIAAACviQHwAAAgAElEQVR4nOzdeUBUVfsH8OfOzrDIgKCCIIobLrijIOK+ZG6Z+..."
+}
+
+[4.950][FINE]:      Command received (/session/928e1700332a3243b02e5f733c639a17/url) with params {
+   "url": "https://github.com/search"
+}
+
+[4.950][FINER]:     Waiting for all views to stop loading...
+[4.951][FINER]:     Done waiting for all views to stop loading
+[5.359][FINER]:     Waiting for all views to stop loading...
+[5.392][FINER]:     Done waiting for all views to stop loading
+[5.392][FINE]:      Command finished (/session/928e1700332a3243b02e5f733c639a17/url) with response {
+   "sessionId": "928e1700332a3243b02e5f733c639a17",
+   "status": 0,
+   "value": {
+
+   }
+}
+
+[5.394][FINE]:      Command received (/session/928e1700332a3243b02e5f733c639a17/screenshot)
+[5.394][FINER]:     Waiting for all views to stop loading...
+[5.394][FINER]:     Done waiting for all views to stop loading
+[5.465][FINER]:     Waiting for all views to stop loading...
+[5.465][FINER]:     Done waiting for all views to stop loading
+[5.465][FINE]:      Command finished (/session/928e1700332a3243b02e5f733c639a17/screenshot) with response {
+   "sessionId": "928e1700332a3243b02e5f733c639a17",
+   "status": 0,
+   "value": "iVBORw0KGgoAAAANSUhEUgAABAAAAAK4CAIAAABlNhj2AAAgAElEQVR4nOzdeVxU9f4/8PfsLDOyDG6jwpimaVrm9FPRUtRCr..."
+}
+
+[5.555][FINE]:      Command received (/session/928e1700332a3243b02e5f733c639a17/url) with params {
+   "url": "https://github.com/explore"
+}
+
+[5.555][FINER]:     Waiting for all views to stop loading...
+[5.556][FINER]:     Done waiting for all views to stop loading
+[5.904][FINER]:     Waiting for all views to stop loading...
+[5.907][FINER]:     Done waiting for all views to stop loading
+[5.907][FINE]:      Command finished (/session/928e1700332a3243b02e5f733c639a17/url) with response {
+   "sessionId": "928e1700332a3243b02e5f733c639a17",
+   "status": 0,
+   "value": {
+
+   }
+}
+
+[5.908][FINE]:      Command received (/session/928e1700332a3243b02e5f733c639a17/screenshot)
+[5.908][FINER]:     Waiting for all views to stop loading...
+[5.909][FINER]:     Done waiting for all views to stop loading
+[6.008][FINER]:     Waiting for all views to stop loading...
+[6.010][FINER]:     Done waiting for all views to stop loading
+[6.010][FINE]:      Command finished (/session/928e1700332a3243b02e5f733c639a17/screenshot) with response {
+   "sessionId": "928e1700332a3243b02e5f733c639a17",
+   "status": 0,
+   "value": "iVBORw0KGgoAAAANSUhEUgAABAAAAAL/CAIAAAB3ayIiAAAgAElEQVR4nOzdd3wU1doH8N/uzmwP6YSWQkIN0r1AQAlFEBEBU..."
+}
+
+[6.122][FINE]:      Command received (/session/928e1700332a3243b02e5f733c639a17/url) with params {
+   "url": "https://github.com/blog"
+}
+
+[6.122][FINER]:     Waiting for all views to stop loading...
+[6.145][FINER]:     Done waiting for all views to stop loading
+[8.370][FINER]:     Waiting for all views to stop loading...
+[8.375][FINER]:     Done waiting for all views to stop loading
+[8.375][FINE]:      Command finished (/session/928e1700332a3243b02e5f733c639a17/url) with response {
+   "sessionId": "928e1700332a3243b02e5f733c639a17",
+   "status": 0,
+   "value": {
+
+   }
+}
+
+[8.376][FINE]:      Command received (/session/928e1700332a3243b02e5f733c639a17/screenshot)
+[8.376][FINER]:     Waiting for all views to stop loading...
+[8.376][FINER]:     Done waiting for all views to stop loading
+[11.627][FINER]:    Waiting for all views to stop loading...
+[11.641][FINER]:    Done waiting for all views to stop loading
+[11.641][FINE]:     Command finished (/session/928e1700332a3243b02e5f733c639a17/screenshot) with response {
+   "sessionId": "928e1700332a3243b02e5f733c639a17",
+   "status": 0,
+   "value": "iVBORw0KGgoAAAANSUhEUgAABAAAAEsDCAIAAADEqMvqAAAgAElEQVR4nOzdd3wURf8H8M/d3u3lSkglgZAGCYSEFsEnEECqt..."
+}
+
+[16.070][FINE]:     Command received (/session/928e1700332a3243b02e5f733c639a17/url) with params {
+   "url": "https://github.com/login"
+}
+
+[16.070][FINER]:    Waiting for all views to stop loading...
+[16.070][FINER]:    Done waiting for all views to stop loading
+[16.356][FINER]:    Waiting for all views to stop loading...
+[16.387][FINER]:    Done waiting for all views to stop loading
+[16.387][FINE]:     Command finished (/session/928e1700332a3243b02e5f733c639a17/url) with response {
+   "sessionId": "928e1700332a3243b02e5f733c639a17",
+   "status": 0,
+   "value": {
+
+   }
+}
+
+[16.388][FINE]:     Command received (/session/928e1700332a3243b02e5f733c639a17/screenshot)
+[16.388][FINER]:    Waiting for all views to stop loading...
+[16.400][FINER]:    Done waiting for all views to stop loading
+[16.492][FINER]:    Waiting for all views to stop loading...
+[16.493][FINER]:    Done waiting for all views to stop loading
+[16.493][FINE]:     Command finished (/session/928e1700332a3243b02e5f733c639a17/screenshot) with response {
+   "sessionId": "928e1700332a3243b02e5f733c639a17",
+   "status": 0,
+   "value": "iVBORw0KGgoAAAANSUhEUgAABAAAAALTCAIAAAAHBedvAAAgAElEQVR4nOzdeVxUVf8H8O+d5Q4wM7IMioEs7oobAY+KmqIW+..."
+}
+
+[16.598][FINE]:     Command received (/session/928e1700332a3243b02e5f733c639a17/url) with params {
+   "url": "https://github.com/plans"
+}
+
+[16.598][FINER]:    Waiting for all views to stop loading...
+[16.621][FINER]:    Done waiting for all views to stop loading
+[16.990][FINER]:    Waiting for all views to stop loading...
+[16.994][FINER]:    Done waiting for all views to stop loading
+[16.994][FINE]:     Command finished (/session/928e1700332a3243b02e5f733c639a17/url) with response {
+   "sessionId": "928e1700332a3243b02e5f733c639a17",
+   "status": 0,
+   "value": {
+
+   }
+}
+
+[16.995][FINE]:     Command received (/session/928e1700332a3243b02e5f733c639a17/screenshot)
+[16.995][FINER]:    Waiting for all views to stop loading...
+[16.996][FINER]:    Done waiting for all views to stop loading
+[17.232][FINER]:    Waiting for all views to stop loading...
+[17.232][FINER]:    Done waiting for all views to stop loading
+[17.233][FINE]:     Command finished (/session/928e1700332a3243b02e5f733c639a17/screenshot) with response {
+   "sessionId": "928e1700332a3243b02e5f733c639a17",
+   "status": 0,
+   "value": "iVBORw0KGgoAAAANSUhEUgAABAAAAAaaCAIAAADbHZjYAAAgAElEQVR4nOzde1xT9f8H8PeubDCEKWCioM0rqGjQT0RIMC8pa..."
+}
+
+[17.481][FINE]:     Command received (/session/928e1700332a3243b02e5f733c639a17/url) with params {
+   "url": "https://github.com/signup"
+}
+
+[17.481][FINER]:    Waiting for all views to stop loading...
+[17.507][FINER]:    Done waiting for all views to stop loading
+[17.842][FINER]:    Waiting for all views to stop loading...
+[17.844][FINER]:    Done waiting for all views to stop loading
+[17.844][FINE]:     Command finished (/session/928e1700332a3243b02e5f733c639a17/url) with response {
+   "sessionId": "928e1700332a3243b02e5f733c639a17",
+   "status": 0,
+   "value": {
+
+   }
+}
+
+[17.845][FINE]:     Command received (/session/928e1700332a3243b02e5f733c639a17/screenshot)
+[17.845][FINER]:    Waiting for all views to stop loading...
+[17.845][FINER]:    Done waiting for all views to stop loading
+[18.008][FINER]:    Waiting for all views to stop loading...
+[18.008][FINER]:    Done waiting for all views to stop loading
+[18.008][FINE]:     Command finished (/session/928e1700332a3243b02e5f733c639a17/screenshot) with response {
+   "sessionId": "928e1700332a3243b02e5f733c639a17",
+   "status": 0,
+   "value": "iVBORw0KGgoAAAANSUhEUgAABAAAAAQUCAIAAABoOPxZAAAgAElEQVR4nOzdd1xTV/sA8OdmQgICAUUsQ0ErUEHF/gTU4sCJ2..."
+}
+
+[18.141][FINE]:     Command received (/session/928e1700332a3243b02e5f733c639a17/url) with params {
+   "url": "https://github.com/signup/free"
+}
+
+[18.142][FINER]:    Waiting for all views to stop loading...
+[18.151][FINER]:    Done waiting for all views to stop loading
+[18.426][FINER]:    Waiting for all views to stop loading...
+[18.449][FINER]:    Done waiting for all views to stop loading
+[18.449][FINE]:     Command finished (/session/928e1700332a3243b02e5f733c639a17/url) with response {
+   "sessionId": "928e1700332a3243b02e5f733c639a17",
+   "status": 0,
+   "value": {
+
+   }
+}
+
+[18.450][FINE]:     Command received (/session/928e1700332a3243b02e5f733c639a17/screenshot)
+[18.450][FINER]:    Waiting for all views to stop loading...
+[18.478][FINER]:    Done waiting for all views to stop loading
+[18.628][FINER]:    Waiting for all views to stop loading...
+[18.629][FINER]:    Done waiting for all views to stop loading
+[18.629][FINE]:     Command finished (/session/928e1700332a3243b02e5f733c639a17/screenshot) with response {
+   "sessionId": "928e1700332a3243b02e5f733c639a17",
+   "status": 0,
+   "value": "iVBORw0KGgoAAAANSUhEUgAABAAAAAQUCAIAAABoOPxZAAAgAElEQVR4nOzdd1xTV/sA8OdmQgICAUUsQ0ErUEHF/gTU4sCJ2..."
+}
+
+[18.794][FINE]:     Command received (/session/928e1700332a3243b02e5f733c639a17/url) with params {
+   "url": "https://github.com/features"
+}
+
+[18.794][FINER]:    Waiting for all views to stop loading...
+[18.795][FINER]:    Done waiting for all views to stop loading
+[19.620][FINER]:    Waiting for all views to stop loading...
+[19.620][FINER]:    Done waiting for all views to stop loading
+[19.620][FINE]:     Command finished (/session/928e1700332a3243b02e5f733c639a17/url) with response {
+   "sessionId": "928e1700332a3243b02e5f733c639a17",
+   "status": 0,
+   "value": {
+
+   }
+}
+
+[19.621][FINE]:     Command received (/session/928e1700332a3243b02e5f733c639a17/screenshot)
+[19.621][FINER]:    Waiting for all views to stop loading...
+[19.622][FINER]:    Done waiting for all views to stop loading
+[19.774][FINER]:    Waiting for all views to stop loading...
+[19.775][FINER]:    Done waiting for all views to stop loading
+[19.775][FINE]:     Command finished (/session/928e1700332a3243b02e5f733c639a17/screenshot) with response {
+   "sessionId": "928e1700332a3243b02e5f733c639a17",
+   "status": 0,
+   "value": "iVBORw0KGgoAAAANSUhEUgAABAAAAATSCAIAAACviQHwAAAgAElEQVR4nOzdd3hUxfoH8Pec7SW9QUIKhJYQIAQMvVcREQvIV..."
+}
+
+[19.931][FINE]:     Command received (/session/928e1700332a3243b02e5f733c639a17/url) with params {
+   "url": "https://github.com/features/projects"
+}
+
+[19.931][FINER]:    Waiting for all views to stop loading...
+[19.938][FINER]:    Done waiting for all views to stop loading
+[20.186][FINER]:    Waiting for all views to stop loading...
+[20.206][FINER]:    Done waiting for all views to stop loading
+[20.206][FINE]:     Command finished (/session/928e1700332a3243b02e5f733c639a17/url) with response {
+   "sessionId": "928e1700332a3243b02e5f733c639a17",
+   "status": 0,
+   "value": {
+
+   }
+}
+
+[20.207][FINE]:     Command received (/session/928e1700332a3243b02e5f733c639a17/screenshot)
+[20.207][FINER]:    Waiting for all views to stop loading...
+[20.227][FINER]:    Done waiting for all views to stop loading
+[20.388][FINER]:    Waiting for all views to stop loading...
+[20.389][FINER]:    Done waiting for all views to stop loading
+[20.389][FINE]:     Command finished (/session/928e1700332a3243b02e5f733c639a17/screenshot) with response {
+   "sessionId": "928e1700332a3243b02e5f733c639a17",
+   "status": 0,
+   "value": "iVBORw0KGgoAAAANSUhEUgAABAAAAATSCAIAAACviQHwAAAgAElEQVR4nOzdd3hUxfoH8Pec7SW9QUIKhJYQIAQMvVcREQvIV..."
+}
+
+[20.544][FINE]:     Command received (/session/928e1700332a3243b02e5f733c639a17/url) with params {
+   "url": "https://github.com/contact"
+}
+
+[20.544][FINER]:    Waiting for all views to stop loading...
+[20.545][FINER]:    Done waiting for all views to stop loading
+[20.825][FINER]:    Waiting for all views to stop loading...
+[20.841][FINER]:    Done waiting for all views to stop loading
+[20.841][FINE]:     Command finished (/session/928e1700332a3243b02e5f733c639a17/url) with response {
+   "sessionId": "928e1700332a3243b02e5f733c639a17",
+   "status": 0,
+   "value": {
+
+   }
+}
+
+[20.843][FINE]:     Command received (/session/928e1700332a3243b02e5f733c639a17/screenshot)
+[20.843][FINER]:    Waiting for all views to stop loading...
+[20.869][FINER]:    Done waiting for all views to stop loading
+[21.002][FINER]:    Waiting for all views to stop loading...
+[21.005][FINER]:    Done waiting for all views to stop loading
+[21.005][FINE]:     Command finished (/session/928e1700332a3243b02e5f733c639a17/screenshot) with response {
+   "sessionId": "928e1700332a3243b02e5f733c639a17",
+   "status": 0,
+   "value": "iVBORw0KGgoAAAANSUhEUgAABAAAAAP9CAIAAACc1IidAAAgAElEQVR4nOzda0ATV/438F9CEm5BjKJWKmCDgoKCBf8iwnqpl..."
+}
+
+[21.116][FINE]:     Command received (/session/928e1700332a3243b02e5f733c639a17/url) with params {
+   "url": "https://github.com/about"
+}
+
+[21.116][FINER]:    Waiting for all views to stop loading...
+[21.116][FINER]:    Done waiting for all views to stop loading
+[21.775][FINER]:    Waiting for all views to stop loading...
+[21.775][FINER]:    Done waiting for all views to stop loading
+[21.775][FINE]:     Command finished (/session/928e1700332a3243b02e5f733c639a17/url) with response {
+   "sessionId": "928e1700332a3243b02e5f733c639a17",
+   "status": 0,
+   "value": {
+
+   }
+}
+
+[21.777][FINE]:     Command received (/session/928e1700332a3243b02e5f733c639a17/screenshot)
+[21.777][FINER]:    Waiting for all views to stop loading...
+[21.778][FINER]:    Done waiting for all views to stop loading
