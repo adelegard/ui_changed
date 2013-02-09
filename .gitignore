@@ -7,3 +7,4 @@ spec/dummy/tmp/
 spec/dummy/public/screenshots
 spec/dummy/.sass-cache
 spec/dummy/chromedriver.log
+spec/dummy/config/database.yml
