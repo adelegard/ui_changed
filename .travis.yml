@@ -1,0 +1,12 @@
+bundler_args: "--without debug"
+rvm:
+  - 1.9.3
+env:
+  - "CI_ORM=mongoid"
+  - "CI_ORM=active_record CI_DB_ADAPTER=sqlite3"
+  - "CI_ORM=active_record CI_DB_ADAPTER=mysql"
+  - "CI_ORM=active_record CI_DB_ADAPTER=postgresql CI_DB_USERNAME=postgres"
+language: ruby
+script: spec/ci.sh
+services:
+  - mongodb
