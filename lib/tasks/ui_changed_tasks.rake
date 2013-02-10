@@ -48,7 +48,7 @@ namespace :ui_changed do
   task :prepare_ci_env do
     ENV['SKIP_RAILS_ADMIN_INITIALIZER'] = 'true'
     adapter = ENV["CI_DB_ADAPTER"] || "mysql2"
-    database = ENV["CI_DB_DATABASE"] || "ci_rails_admin"
+    database = ENV["CI_DB_DATABASE"] || "ui_changed_test"
 
     configuration = {
       "test" => {
