@@ -18,25 +18,16 @@ gem 'resque_mailer'
 gem 'resque-status'
 
 group :active_record do
-  platforms :jruby do
-    gem 'activerecord-jdbcsqlite3-adapter', '~> 1.2'
-    gem 'jdbc-sqlite3', '~> 3.6'
-  end
-
   platforms :ruby, :mswin, :mingw do
     case ENV['CI_DB_ADAPTER']
     when 'mysql2'
-      gem 'mysql2', '2.8.1'
+      gem 'mysql2'
     when 'postgresql'
       gem 'pg', '~> 0.13'
     else
       gem 'sqlite3', '~> 1.3'
     end
   end
-end
-
-group :mongoid do
-  gem 'mongoid', '~> 3.0'
 end
 
 # Gems used only for assets and not required
