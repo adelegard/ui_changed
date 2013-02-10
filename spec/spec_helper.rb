@@ -13,23 +13,10 @@ FactoryGirl.find_definitions
 
 Rails.backtrace_cleaner.remove_silencers!
 
-# Requires supporting ruby files with custom matchers and macros, etc,
-# in spec/support/ and its subdirectories.
-#Dir[UiChanged::Engine.root.join("spec/support/**/*.rb")].each {|f| require f}
-
-#ENGINE_RAILS_ROOT = File.join( File.dirname(__FILE__), '../')
-#Dir[File.join(ENGINE_RAILS_ROOT, "spec/support/**/*.rb")].each {|f| require f}
-
 RSpec.configure do |config|
 
   # Factory Girl settings
   config.include FactoryGirl::Syntax::Methods
-
-  # adding these to get route tests working. found answer at:
-  # http://stackoverflow.com/questions/11587463/all-routing-examples-fail-for-a-rails-3-2-engine-with-rspec-2-10
-#  config.before(:each, type: :controller) { @routes = UiChanged::Engine.routes }
-#  config.before(:each, type: :routing)    { @routes = UiChanged::Engine.routes }
-#  config.before(:each, type: :models)     { @screenshot = FactoryGirl.create(:screenshot) }
 
   config.include UiChanged::Engine.routes.url_helpers
 
