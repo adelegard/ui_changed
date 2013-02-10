@@ -4,16 +4,17 @@ require 'debugger'
 
 describe "routing to screenshots" do
   before(:each) { @routes = UiChanged::Engine.routes }
-
 =begin
+
+# none of these tests work b/c of "No route matches" erros - annoying
+
   it "Routes the root to the screenshot controller's index action" do
-    get(:index, {:use_route => :ui_changed}).should route_to(:controller => 'ui_changed/screenshots', :action => 'index')
-    #{ :get => '/' }.should route_to(:controller => 'ui_changed/screenshots', :action => 'index')
+    { :get => '/' }.should route_to(:controller => 'ui_changed/screenshots', :action => 'index')
   end
 
   it "routes /index to screenshots#index" do
-    expect(:get => "/ui_changed/screenshots").to route_to(
-      :controller => "screenshots",
+    expect(:get => "/screenshots").to route_to(
+      :controller => "ui_changed/screenshots",
       :action => "index"
     )
   end
