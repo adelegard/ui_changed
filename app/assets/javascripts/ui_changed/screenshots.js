@@ -113,7 +113,7 @@ if (typeof(Screenshots) === 'undefined') {
     _update_crawl_status: function() {
       $.ajax({
         dataType: "json",
-        url: "ui_changed/screenshots/crawl_status.json",
+        url: "screenshots/crawl_status.json",
         success: function(data) {
           var screenshots = data[0].screenshots;
           var running_status = data[0].worker.running_status;

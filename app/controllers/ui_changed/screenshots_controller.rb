@@ -162,7 +162,6 @@ module UiChanged
     # POST /screenshots/set_all_tests_as_control
     def set_all_tests_as_control
       UiChanged::Screenshot.set_all_tests_as_controls
-      UiChanged::Screenshot.move_all_test_images_to_control
       head :ok
     end
 

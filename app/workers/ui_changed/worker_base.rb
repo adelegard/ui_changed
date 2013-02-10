@@ -1,6 +1,28 @@
 module UiChanged
   class WorkerBase
 
+    class << self
+      def remove_folder_contents_or_create(path)
+        # does control/test directory exist?
+        puts 'checking if dir exists: ' + path
+        if Dir.exists?(path)
+          path_contents = path + '*'
+          puts 'removing directory contents of :' + path_contents
+          FileUtils.rm_rf(Dir.glob(path_contents))
+        else
+          # create control/test folder
+          create_folders(path)
+        end
+      end
+
+      def create_folders(path)
+        unless Dir.exists?(path)
+          puts 'creating dir path: ' + path.to_s
+          FileUtils.mkdir_p path
+        end
+      end
+    end
+
     protected
 
     def crawl_by_is_control(is_control)
@@ -40,7 +62,7 @@ module UiChanged
       # does control/test directory exist?
       # if so remove everything in it
       # if not, create it
-      remove_folder_contents_or_create(image_dir)
+      UiChanged::WorkerBase.remove_folder_contents_or_create(image_dir)
 
       driver = Selenium::WebDriver.for :chrome
       driver.manage.window.resize_to(1024, 768) # this doesn't work (i dont think)
@@ -132,7 +154,7 @@ module UiChanged
       # does compare directory exist?
       # if so remove everything in it
       # if not, create it
-      remove_folder_contents_or_create(compare_image_dir)
+      UiChanged::WorkerBase.remove_folder_contents_or_create(compare_image_dir)
 
       control_images = UiChanged::Screenshot.where(:is_control => true)
       control_images.each do |control_image|
@@ -167,26 +189,6 @@ module UiChanged
     end
 
     private
-
-    def remove_folder_contents_or_create(path)
-      # does control/test directory exist?
-      puts 'checking if dir exists: ' + path
-      if Dir.exists?(path)
-        path_contents = path + '*'
-        puts 'removing directory contents of :' + path_contents
-        FileUtils.rm_rf(Dir.glob(path_contents))
-      else
-        # create control/test folder
-        create_folders(path)
-      end
-    end
-
-    def create_folders(path)
-      unless Dir.exists?(path)
-        puts 'creating dir path: ' + path.to_s
-        FileUtils.mkdir_p path
-      end
-    end
 
     def compare(control_img, test_img, diff_img, diff_img_small)
       args = "-compose Src -highlight-color #FF0000 #{control_img} #{test_img} #{diff_img}"

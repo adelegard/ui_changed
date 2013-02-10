@@ -85,6 +85,7 @@ module UiChanged
       end
       def set_all_tests_as_controls
         delete_all_controls
+        move_all_test_images_to_control
         UiChanged::Screenshot.update_all({:is_control => true, :is_test => false}, {:is_test => true})
       end
       def set_tests_as_controls(test_ids)
