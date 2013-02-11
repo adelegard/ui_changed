@@ -159,6 +159,7 @@ Once you've made your great commits:
 Copyright © 2013 Alex Delegard. See LICENSE.txt for
 further details.
 
+[gem]: https://rubygems.org/gems/ui_changed
 [forking]: http://help.github.com/forking/
 [pull requests]: http://help.github.com/pull-requests/
 [selenium_downloads]: http://code.google.com/p/selenium/downloads/list
