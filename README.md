@@ -1,6 +1,7 @@
 ## Ui_Changed
 
 [![Build Status](https://secure.travis-ci.org/adelegard/ui_changed.png?branch=master)](http://travis-ci.org/adelegard/ui_changed)
+[![Gem Version](https://badge.fury.io/rb/ui_changed.png)][gem]
 
 This rails plugin provides an interface for detecting differences in your UIs by comparing screenshots.
 
