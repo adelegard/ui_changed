@@ -6,6 +6,7 @@ body {margin-top: 40px;}
 
 .crawl_btns .running {border: 3px solid red;}
 
+.diff_screenshots > div:first-child {margin-left: 0;}
 .diff_screenshots img, table.screenshots tbody tr td img {border: 1px solid #ccc; padding: 2px;}
 .diff_screenshots img:hover, table.screenshots tbody tr td img:hover {border: 1px solid #000;}
 .diffs tbody tr {cursor: pointer;}
