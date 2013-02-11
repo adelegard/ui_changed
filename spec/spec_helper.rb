@@ -11,7 +11,6 @@ require 'database_cleaner'
 
 Capybara.javascript_driver = :webkit
 
-#FactoryGirl.definition_file_paths << File.join(File.dirname(__FILE__), 'factories')
 FactoryGirl.definition_file_paths = [
   File.join(UiChanged::Engine.root, 'spec/support/factories')
 ]
@@ -21,7 +20,6 @@ Rails.backtrace_cleaner.remove_silencers!
 
 RSpec.configure do |config|
 
-  # Factory Girl settings
   config.include FactoryGirl::Syntax::Methods
 
   config.include UiChanged::Engine.routes.url_helpers
@@ -49,9 +47,6 @@ RSpec.configure do |config|
   # config.mock_with :flexmock
   # config.mock_with :rr
   config.mock_with :rspec
-
-  # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
-  config.fixture_path = "#{::UiChanged::Engine.root}/spec/fixtures"
 
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
