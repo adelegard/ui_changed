@@ -5,9 +5,7 @@ require 'bootstrap-will_paginate'
 require 'anemone'
 require 'selenium-webdriver'
 require "jquery-rails"
-
 require 'font-awesome-sass-rails'
-
 require 'resque'
 require 'resque_mailer'
 require 'resque-status'

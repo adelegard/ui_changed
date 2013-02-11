@@ -3,15 +3,36 @@ require 'spec_helper'
 require 'debugger'
 
 describe "routing to screenshots" do
-  before(:each) { @routes = UiChanged::Engine.routes }
-=begin
 
-# none of these tests work b/c of "No route matches" erros - annoying
-
-  it "Routes the root to the screenshot controller's index action" do
-    { :get => '/' }.should route_to(:controller => 'ui_changed/screenshots', :action => 'index')
+  it "loads diffs with content" do
+    visit "/ui_changed/screenshots/diffs"
+    assert find('h1').has_content?('Diff Screenshots')
   end
 
+  it "loads controls with content" do
+    visit "/ui_changed/screenshots/controls"
+    assert find('h1').has_content?("Control Screenshots")
+  end
+
+  it "loads tests with content" do
+    visit "/ui_changed/screenshots/tests"
+    assert find('h1').has_content?("Test Screenshots")
+  end
+
+  it "loads compares with content" do
+    visit "/ui_changed/screenshots/compares"
+    assert find('h1').has_content?("Compare Screenshots")
+  end
+
+  it "loads ignores with content" do
+    visit "/ui_changed/screenshot_ignore_urls"
+    assert find('h1').has_content?("Ignored Urls")
+  end  
+
+#  before(:each) { @routes = UiChanged::Engine.routes }
+# none of these tests work b/c of "No route matches" erros - annoying
+
+=begin
   it "routes /index to screenshots#index" do
     expect(:get => "/screenshots").to route_to(
       :controller => "ui_changed/screenshots",

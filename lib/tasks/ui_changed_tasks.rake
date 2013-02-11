@@ -39,34 +39,4 @@ namespace :ui_changed do
   task :compare => :environment do
     UiChanged::Screenshot.start_async_compare
   end
-
-  task :start_selenium_server => :environment do
-    `java -jar #{Rails.root}/lib/tasks/selenium-server-standalone-2.28.0.jar`
-  end
-
-  desc "CI env for Travis"
-  task :prepare_ci_env do
-    ENV['SKIP_RAILS_ADMIN_INITIALIZER'] = 'true'
-    adapter = ENV["CI_DB_ADAPTER"] || "mysql2"
-    database = ENV["CI_DB_DATABASE"] || "ui_changed_test"
-
-    configuration = {
-      "test" => {
-        "adapter" => adapter,
-        "database" => database,
-        "username" => ENV["CI_DB_USERNAME"],
-        "password" => ENV["CI_DB_PASSWORD"],
-        "host" => ENV["CI_DB_HOST"] || "localhost",
-        "encoding" => ENV["CI_DB_ENCODING"] || "utf8",
-        "pool" => (ENV["CI_DB_POOL"] || 5).to_int,
-        "timeout" => (ENV["CI_DB_TIMEOUT"] || 5000).to_int
-      }
-    }
-
-    filename = Rails.root.join("config/database.yml")
-
-    File.open(filename, "w") do |f|
-      f.write(configuration.to_yaml)
-    end
-  end
 end

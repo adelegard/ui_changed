@@ -38,7 +38,19 @@ describe "screenshot functionality actions" do
     UiChanged::WorkerBase.remove_folder_contents_or_create(@dummy_compare_path)
   }
 
-  # url
+=begin
+  # this one isn't working - can't figure it out yet
+  it "loads controls with content", :js => true do
+    visit "/ui_changed/screenshots/controls"
+
+    UiChanged::Screenshot.where(:is_control => true).count.should eq(5)
+
+    all(".f_checkall_child").select.first.set(true)
+    all(".f_remove").select.first.click
+
+    UiChanged::Screenshot.where(:is_control => true).count.should eq(4)
+  end
+=end
 
   it "should have 5 db control entries" do
     UiChanged::Screenshot.where(:is_control => true).count.should eq(5)
