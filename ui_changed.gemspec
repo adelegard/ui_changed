@@ -17,10 +17,11 @@ Gem::Specification.new do |s|
   s.files = Dir["{app,config,db,lib}/**/*"]
   s.test_files = Dir["spec/**/*"]
 
+  s.add_dependency "rails", "~> 3.2.11"
   s.add_dependency "bootstrap-sass"
   s.add_dependency 'will_paginate'
-  s.add_dependency "haml-rails"
   s.add_dependency 'bootstrap-will_paginate'
+  s.add_dependency "haml-rails"
   s.add_dependency 'anemone'
   s.add_dependency 'selenium-webdriver'
   s.add_dependency "jquery-rails"
@@ -29,7 +30,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'resque_mailer'
   s.add_dependency 'resque-status'
 
-  s.add_development_dependency "rails", "~> 3.2.11"
+  s.add_development_dependency 'sass-rails', '~> 3.2.3'
   s.add_development_dependency 'rspec-rails'
   s.add_development_dependency 'capybara'
   s.add_development_dependency "capybara-webkit"

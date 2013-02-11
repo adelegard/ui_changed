@@ -1,7 +1,8 @@
+require "rails"
 require "bootstrap-sass"
 require 'will_paginate'
-require "haml-rails"
 require 'bootstrap-will_paginate'
+require "haml-rails"
 require 'anemone'
 require 'selenium-webdriver'
 require "jquery-rails"
