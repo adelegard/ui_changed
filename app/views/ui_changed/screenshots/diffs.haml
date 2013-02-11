@@ -16,7 +16,7 @@
       -@all_screenshots.each do |screenshots|
         %tr
           %input.f_id{:type => "hidden", :value => screenshots.diff_ss.id}
-          %input.diff_url{:type => "hidden", :value => screenshot_diff_path + "?diff_id=#{screenshots.diff_ss.id}"}
+          %input.f_diff_url{:type => "hidden", :value => screenshot_diff_path + "?diff_id=#{screenshots.diff_ss.id}"}
           %td
             %input.f_checkall_child{:type => "checkbox"}
           %td

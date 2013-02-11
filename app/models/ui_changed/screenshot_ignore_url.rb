@@ -4,7 +4,7 @@ module UiChanged
 
     validates :url, :presence => true, :format => URI::regexp(%w(http https))
 
-    self.per_page = 10
+    self.per_page = 15
 
     class << self
       def search(search)

@@ -13,5 +13,5 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
-//= require ui_changed/screenshots
+//= require ui_changed/ui_changed
 //= require_tree .
