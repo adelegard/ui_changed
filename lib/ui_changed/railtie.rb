@@ -1,6 +1,3 @@
-require 'ui_changed'
-require 'rails'
-
 module UiChanged
   class Railtie < Rails::Railtie
     railtie_name :ui_changed
