@@ -2,9 +2,6 @@ require 'spec_helper'
 require 'debugger'
 
 describe "screenshot actions" do
-
-#  before(:each) { @screenshot = FactoryGirl.create(:screenshot) }
-
   # url
 
   it "should not allow urls that don't start with http or https" do
