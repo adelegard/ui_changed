@@ -83,7 +83,7 @@ module UiChanged
 
     # GET /screenshots/compares
     def compares
-      params[:sort] ||= "url asc"
+      params[:sort] ||= "ui_changed_screenshots.url asc"
       @screenshots = UiChanged::Screenshot.search(params[:search]).not_in_ignored.where(:is_compare => true)
                                                                   .paginate(:page => params[:page],
                                                                             :per_page => params[:per_page],
@@ -94,7 +94,7 @@ module UiChanged
 
     # GET /screenshots/controls
     def controls
-      params[:sort] ||= "url asc"
+      params[:sort] ||= "ui_changed_screenshots.url asc"
       @screenshots = UiChanged::Screenshot.search(params[:search]).not_in_ignored.where(:is_control => true)
                                                                   .paginate(:page => params[:page],
                                                                             :per_page => params[:per_page],
@@ -105,7 +105,7 @@ module UiChanged
 
     # GET /screenshots/tests
     def tests
-      params[:sort] ||= "url asc"
+      params[:sort] ||= "ui_changed_screenshots.url asc"
       @screenshots = UiChanged::Screenshot.search(params[:search]).not_in_ignored.where(:is_test => true)
                                                                   .paginate(:page => params[:page],
                                                                             :per_page => params[:per_page],

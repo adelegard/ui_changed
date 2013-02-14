@@ -2,7 +2,7 @@ UiChanged::Engine.routes.draw do
 
   root :to => "screenshots#index"
 
-  match '/screenshots/crawl_status' => 'screenshots#crawl_status', :as => :screenshot_crawl_status
+  match '/screenshots/crawl_status' => 'screenshots#crawl_status', :as => :screenshot_crawl_status, :defaults => { :format => 'json' }
 
   match '/screenshots/diffs' => 'screenshots#diffs', :as => :screenshot_diffs
   match '/screenshots/compares' => 'screenshots#compares', :as => :screenshot_compares
@@ -27,7 +27,7 @@ UiChanged::Engine.routes.draw do
   match '/screenshots/start_compare' => 'screenshots#start_compare', :as => :screenshot_start_compare, :via => :post
   match '/screenshots/cancel' => 'screenshots#cancel', :as => :screenshot_cancel, :via => :post
 
-  match '/screenshot_ignore_urls/add' => 'screenshot_ignore_urls#add', :via => :post
+  match '/screenshot_ignore_urls/add' => 'screenshot_ignore_urls#add', :as => :screenshot_ignore_url_add, :via => :post
   match '/screenshot_ignore_urls/add_all_controls' => 'screenshot_ignore_urls#add_all_controls', :as => :screenshot_ignore_url_add_all_controls, :via => :post
   match '/screenshot_ignore_urls/add_all_tests' => 'screenshot_ignore_urls#add_all_tests', :as => :screenshot_ignore_url_add_all_tests, :via => :post
   match '/screenshot_ignore_urls/add_all_compares' => 'screenshot_ignore_urls#add_all_compares', :as => :screenshot_ignore_url_add_all_compares, :via => :post

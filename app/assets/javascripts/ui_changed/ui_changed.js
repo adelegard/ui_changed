@@ -54,10 +54,8 @@ if (typeof(UiChanged) === 'undefined') {
     _action_set_test_as_control_url_selector: '.f_set_test_as_control_url',
     _remove_url_selector:                     '.f_remove_url',
     _diffs_url_selector:                      '.f_diff_url',
-
-    /* urls */
-    _url_add_ignore:   "/ui_changed/screenshot_ignore_urls/add?id=",
-    _url_crawl_status: "screenshots/crawl_status.json",
+    _crawl_status_url_selector:               '.f_crawl_status_url',
+    _add_ignore_url_selector:                 '.f_ignore_url_add',
 
     _init: function() {
       if(this._initialized) return;
@@ -96,7 +94,7 @@ if (typeof(UiChanged) === 'undefined') {
       UiChanged._ajax_with_type($(this).attr("data-href") + "?id=" + UiChanged._get_checked_ids(), "DELETE");
     },
     _actions_ignore: function() {
-      UiChanged._ajax_with_type(UiChanged._url_add_ignore + UiChanged._get_checked_ids(), "POST");
+      UiChanged._ajax_with_type($(UiChanged._add_ignore_url_selector).val() + UiChanged._get_checked_ids(), "POST");
     },
     _actions_set_test_as_control: function() {
       UiChanged._ajax_with_type($(UiChanged._action_set_test_as_control_url_selector).val() + '?id=' + UiChanged._get_checked_ids(), "POST");
@@ -168,7 +166,7 @@ if (typeof(UiChanged) === 'undefined') {
     _update_crawl_status: function() {
       $.ajax({
         dataType: "json",
-        url: UiChanged._url_crawl_status,
+        url: $(UiChanged._crawl_status_url_selector).val(),
         success: function(data) {
           var screenshots = data[0].screenshots;
           var running_status = data[0].worker.running_status;

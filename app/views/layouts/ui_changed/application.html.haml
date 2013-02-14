@@ -12,3 +12,4 @@
       .row
         .span3= render :partial => "ui_changed/screenshots/side_nav"
         .span9= yield
+        %input.f_ignore_url_add{:type => "hidden", :value => screenshot_ignore_url_add_path + "?id="}

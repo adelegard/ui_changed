@@ -1,4 +1,5 @@
 %input.f_crawl_working{:type => "hidden", :value => @crawl_working}
+%input.f_crawl_status_url{:type => "hidden", :value => screenshot_crawl_status_path}
 %input.f_on_home_page{:type => "hidden", :value => (request.fullpath == screenshots_path ? "true" : "false")}
 .btn-group.crawl_btns
   %button.btn.btn-large.btn-success.f_crawl_action{"data-action" => screenshot_start_all_path, "data-original-title" => "Start control, then test, then compare", :rel => "tooltip"} Start All

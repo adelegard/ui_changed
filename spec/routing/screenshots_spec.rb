@@ -4,6 +4,16 @@ require 'debugger'
 
 describe "routing to screenshots" do
 
+  it "loads home page with content" do
+    visit "/ui_changed/screenshots"
+    assert page.has_content?('Start All')
+  end
+
+  it "loads crawl_status with content" do
+    visit "/ui_changed/screenshots/crawl_status"
+    assert find('body').has_content?('[{"screenshots":')
+  end
+
   it "loads diffs with content" do
     visit "/ui_changed/screenshots/diffs"
     assert find('h1').has_content?('Diff Screenshots')
@@ -33,6 +43,12 @@ describe "routing to screenshots" do
 # none of these tests work b/c of "No route matches" erros - annoying
 
 =begin
+
+  it "routes index to screenshots#index" do
+    get :index
+    page.driver.status_code.should eql 200
+  end
+
   it "routes /index to screenshots#index" do
     expect(:get => "/screenshots").to route_to(
       :controller => "ui_changed/screenshots",
