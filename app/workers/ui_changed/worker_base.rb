@@ -64,7 +64,8 @@ module UiChanged
       # if not, create it
       UiChanged::WorkerBase.remove_folder_contents_or_create(image_dir)
 
-      driver = Selenium::WebDriver.for :chrome
+      driver = Selenium::WebDriver.for UiChanged::ConfigHelper.selenium_browser.to_sym
+
       driver.manage.window.resize_to(1024, 768) # this doesn't work (i dont think)
       driver.manage.timeouts.implicit_wait = 60 # seconds
 

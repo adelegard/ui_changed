@@ -32,6 +32,7 @@ defaults: &defaults
   control_path: "public/screenshots/control/"
   test_path: "public/screenshots/test/"
   compare_path: "public/screenshots/compare/"
+  selenium_browser: "firefox"
   auth_username:
   auth_password:
   control_url: "http://some_control_url"
