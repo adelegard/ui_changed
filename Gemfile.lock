@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    ui_changed (0.0.4)
+    ui_changed (0.0.6)
       anemone
       bootstrap-sass
       bootstrap-will_paginate

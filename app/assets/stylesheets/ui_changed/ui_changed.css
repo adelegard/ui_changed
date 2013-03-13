@@ -14,8 +14,8 @@ body {margin-top: 40px;}
 
 .crawling {margin-top: 5px;}
 .crawling .urls {overflow: scroll;}
-.crawling .last_img, .crawling .urls {float: left; width: 300px; height: 300px; padding: 7px; border: 1px solid #bbb; -webkit-border-radius: 6px; -moz-border-radius: 6px; border-radius: 6px; margin: 3px;}
-.crawling .urls li {text-align: left; -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px; padding: 2px 5px;}
+.crawling .last_img, .crawling .urls {float: left; width: 300px; height: 300px; padding: 7px; border: 1px solid #bbb; -webkit-border-radius: 6px; -moz-border-radius: 6px; border-radius: 6px; margin: 3px 8px 0 0;}
+.crawling .urls li {text-align: left; -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px; padding: 2px 5px; white-space: nowrap;}
 .crawling .urls li.active {background-color: #ddd;}
 .crawling .urls li:hover {cursor: pointer; background-color: #efefef;}
 .crawling .urls li a i.diff_found {color: red;}

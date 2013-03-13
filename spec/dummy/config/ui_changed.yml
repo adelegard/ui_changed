@@ -7,7 +7,7 @@ defaults: &defaults
   auth_password:
   control_url: "http://github.com"
   test_url: "http://github.com"
-  skip_url_reg_exp: "(recipes|ingredients)"
+  skip_url_reg_exp:
   skip_query_strings: true
   email_results_to:
   email_after_control_crawl: true

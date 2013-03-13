@@ -69,16 +69,22 @@ module UiChanged
       driver.manage.window.resize_to(1024, 768) # this doesn't work (i dont think)
       driver.manage.timeouts.implicit_wait = 60 # seconds
 
-      urls_to_skip = Regexp.new(UiChanged::ConfigHelper.skip_url_reg_exp)
-      puts urls_to_skip.to_s
+      skip_url_reg_exp = UiChanged::ConfigHelper.skip_url_reg_exp
+      if skip_url_reg_exp
+        urls_to_skip = Regexp.new(skip_url_reg_exp)
+        puts urls_to_skip.to_s
+      end
 
-      skip_query_strings = UiChanged::ConfigHelper.skip_query_strings ||= false
+      skip_query_strings = UiChanged::ConfigHelper.skip_query_strings
+      skip_query_strings ||= false
       puts 'skip query strings: ' + skip_query_strings.to_s
 
       STDOUT.flush
       count = 0
       Anemone.crawl(crawl_url, :skip_query_strings => skip_query_strings) do |anemone|
-        anemone.skip_links_like urls_to_skip
+        if urls_to_skip
+          anemone.skip_links_like urls_to_skip
+        end
         anemone.on_every_page do |page|
 
           status_msg = "browsing to " + page.url.to_s + "  --- " + count.to_s
